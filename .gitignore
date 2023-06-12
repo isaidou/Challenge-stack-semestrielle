@@ -1,0 +1,8 @@
+www/public/uploads/*
+www/src/Config/Config.php
+www/src/vendor/*
+server/*
+site/*
+docker-compose.yml
+
+```
