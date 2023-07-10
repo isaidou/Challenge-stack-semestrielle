@@ -1,4 +1,4 @@
-# CMS pour Blog de Football
+# CMS pour Blog 
 
 Ce CMS est une application développée en PHP pour gérer un blog de football. Il fournit un ensemble de fonctionnalités permettant de créer, gérer et modérer facilement du contenu lié au football.
 
@@ -33,10 +33,6 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce proje
 
 Consultez [CONTRIBUTING.md](./CONTRIBUTING.md) pour des informations supplémentaires sur la contribution.
 
-## Captures d'écran
-
-![Capture d'écran 1](./screenshots/screenshot1.png)
-![Capture d'écran 2](./screenshots/screenshot2.png)
 
 ## Crédits
 
