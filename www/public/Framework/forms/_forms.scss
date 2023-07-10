@@ -1,0 +1,122 @@
+/* Définition de la classe %flex-1 */
+
+/* Placeholder pour appliquer la propriété 'flex: 1;' */
+%flex-1 {
+  flex: 1;
+}
+
+/* Définition de la classe .form */
+
+/* Classe pour les éléments de formulaire */
+.form {
+  &-input {
+    padding: $form-input-padding;
+    font-size: $form-input-font-size;
+    color: $form-input-font-color;
+    border: $form-input-border-width solid $form-input-border-color;
+    border-radius: $form-input-border-radius;
+    background-color: $form-input-background-color;
+    width: 100%;
+    @extend %flex-1;
+
+    /* Styles lorsqu'un champ de formulaire est actif ou en focus */
+    &:active,
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 4px rgba( $primary, 0.25) ;
+      border-color: $form-input-active-border-color;
+    }
+
+    /* Styles pour le placeholder du champ de formulaire */
+    ::placeholder {
+      color: $form-input-placeholder-color;
+    }
+
+    /* Styles pour les différentes tailles du champ de formulaire */
+    &-sm {
+      font-size: $form-input-sm-font-size;
+      padding: $form-input-sm-padding;
+    }
+    &-lg {
+      font-size: $form-input-lg-font-size;
+      padding: $form-input-lg-padding;
+    }
+    &-xl {
+      font-size: $form-input-xl-font-size;
+      padding: $form-input-sm-padding;
+    }
+  }
+
+  /* Classe pour les champs de formulaire */
+  &-field {
+    margin-bottom: $form-field-margin-bottom;
+
+    /* Styles pour l'étiquette du champ de formulaire */
+    label {
+      display: inline-block;
+      font-size: $form-field-label-size;
+      font-weight: $form-field-label-weigth;
+      line-height: $form-field-label-heigth;
+      margin-bottom: $form-field-label-mb;
+      color: $form-field-label-color;
+    }
+
+    /* Styles pour un champ de formulaire invalide */
+    &.invalid {
+      label {
+        color: $form-input-invalid-color;
+      }
+      .form-input {
+        border-color: $form-input-invalid-color;
+        &:active,
+        &:focus {
+          box-shadow: 0px 0px 4px rgba( $danger, 0.25) ;
+        }
+      }
+    }
+
+    /* Styles pour les champs de formulaire disposés horizontalement */
+    &.horizontal {
+      display: flex;
+      @extend %is-wrap-row;
+
+      /* Marges pour les étiquettes des champs de formulaire */
+      .label,
+      label {
+        margin-right: 1rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* Classe pour les champs de texte du formulaire */
+  &-text {
+    display: block;
+    width: 100%;
+    color: $form-text-color;
+    font-size: $form-text-size;
+    line-height: normal;
+    margin-top: 0.25em;
+  }
+}
+
+/* Classe pour les éléments avec des add-ons */
+.with-addons {
+  @extend .horizontal; // Étend la classe .horizontal pour avoir une disposition horizontale des éléments
+  align-items: stretch; // Étend les éléments pour occuper tout l'espace horizontal disponible
+  @extend %flex-1; // Étend le placeholder %flex-1 pour que les éléments aient une part équitable de l'espace horizontal
+
+  /* Styles pour les champs de formulaire avec des add-ons */
+  .form-input {
+    border-top-right-radius: 0; // Supprime le coin supérieur droit de la bordure
+    border-bottom-right-radius: 0; // Supprime le coin inférieur droit de la bordure
+    @extend %flex-1; // Étend le placeholder %flex-1 pour que les champs de formulaire occupent une part équitable de l'espace horizontal
+  }
+
+  /* Styles pour les boutons avec des add-ons */
+  .btn {
+    border-top-left-radius: 0; // Supprime le coin supérieur gauche de la bordure
+    border-bottom-left-radius: 0; // Supprime le coin inférieur gauche de la bordure
+    border-left: none; // Supprime la bordure gauche des boutons pour éliminer la séparation avec le champ de formulaire voisin
+  }
+}

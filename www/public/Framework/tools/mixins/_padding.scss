@@ -1,0 +1,70 @@
+// Cette mixin génère une classe pour définir une valeur de padding sur un élément.
+
+// Déclaration de la mixin avec deux paramètres :
+// - $padding-value : la valeur de padding à appliquer
+// - $padding-property : la propriété de padding à utiliser (par défaut : "padding")
+
+@mixin create-padding($padding-value, $padding-property: padding) {
+  // Génère une classe avec la propriété de padding spécifiée et la valeur de padding fournie
+  #{$padding-property}: $padding-value;
+}
+
+// Cette mixin génère des classes pour définir différentes tailles de padding en fonction d'un préfixe et d'une taille.
+
+// Déclaration de la mixin avec trois paramètres :
+// - $padding-size : la taille du padding à générer
+// - $breakpoint : le point de rupture (breakpoint) pour lequel générer les classes (utilisé pour la deuxième mixin)
+// - $prefix : un préfixe pour les classes générées (utilisé pour la deuxième mixin)
+
+@mixin create-padding-size-for-breakpoint($padding-size, $breakpoint, $prefix) {
+  // Génère plusieurs classes pour différentes propriétés de padding (right, left, top, bottom)
+  .p-#{$prefix}-#{$padding-size},
+  .px-#{$prefix}-#{$padding-size},
+  .pr-#{$prefix}-#{$padding-size} {
+    padding-right: 0.25rem * $padding-size;
+  }
+  .p-#{$prefix}-#{$padding-size},
+  .px-#{$prefix}-#{$padding-size},
+  .pl-#{$prefix}-#{$padding-size} {
+    padding-left: 0.25rem * $padding-size;
+  }
+  .p-#{$prefix}-#{$padding-size},
+  .py-#{$prefix}-#{$padding-size},
+  .pt-#{$prefix}-#{$padding-size} {
+    padding-top: 0.25rem * $padding-size;
+  }
+  .p-#{$prefix}-#{$padding-size},
+  .py-#{$prefix}-#{$padding-size},
+  .pb-#{$prefix}-#{$padding-size} {
+    padding-bottom: 0.25rem * $padding-size;
+  }
+}
+
+// Cette mixin génère des classes pour définir différentes tailles de padding en fonction d'une taille.
+
+// Déclaration de la mixin avec un paramètre :
+// - $padding-size : la taille du padding à générer
+
+@mixin create-padding-size($padding-size) {
+  // Génère plusieurs classes pour différentes propriétés de padding (right, left, top, bottom)
+  .p-#{$padding-size},
+  .px-#{$padding-size},
+  .pr-#{$padding-size} {
+    padding-right: 0.25rem * $padding-size;
+  }
+  .p-#{$padding-size},
+  .px-#{$padding-size},
+  .pl-#{$padding-size} {
+    padding-left: 0.25rem * $padding-size;
+  }
+  .p-#{$padding-size},
+  .py-#{$padding-size},
+  .pt-#{$padding-size} {
+    padding-top: 0.25rem * $padding-size;
+  }
+  .p-#{$padding-size},
+  .py-#{$padding-size},
+  .pb-#{$padding-size} {
+    padding-bottom: 0.25rem * $padding-size;
+  }
+}

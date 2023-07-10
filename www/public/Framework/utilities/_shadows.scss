@@ -1,0 +1,17 @@
+// Classe pour supprimer l'ombre (box-shadow)
+.shadow-none {
+  box-shadow: none;
+}
+
+// Classe pour appliquer une ombre de taille moyenne (md) à l'élément
+.shadow {
+  box-shadow: map-get($box-shadow-sizes, md);
+}
+
+// Boucle pour générer des classes d'ombre avec différentes tailles
+@each $shadow-size, $shadow in $box-shadow-sizes {
+  // Classe avec le nom de la taille d'ombre et l'ombre correspondante
+  .shadow-#{$shadow-size} {
+    box-shadow: $shadow;
+  }
+}

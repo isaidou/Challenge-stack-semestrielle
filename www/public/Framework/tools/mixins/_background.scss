@@ -1,0 +1,17 @@
+/// Retourne une couleur de fond et une couleur de texte en fonction d'une couleur
+/// @param {string} $color
+@mixin get-background-and-color($color) {
+  background-color: $color!important;
+}
+
+/// Crée des classes de fond pour une couleur spécifique
+/// @param {string} $name - Nom de la couleur
+/// @param {string} $color - Valeur de la couleur
+@mixin create-background-for-color($name, $color) {
+  // Classe pour la couleur de fond
+  .bg-#{$name},
+  .hover\:.bg-#{$name} {
+    color: set-color($color); // Définit la couleur du texte en fonction de la luminosité de la couleur de fond
+    // background-color: $color; // Couleur de fond (commenté)
+  }
+}

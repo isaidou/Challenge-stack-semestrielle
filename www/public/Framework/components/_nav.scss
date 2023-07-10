@@ -1,0 +1,143 @@
+nav {
+  width: 100%;
+}
+
+.nav {
+  // Utilisation d'un mixin pour réutiliser des styles de padding
+  @extend .padding-inline-0;
+  
+  
+  
+  
+  list-style: none;
+
+  &-link {
+    // Styles pour les liens dans la navigation
+    padding: $nav-link-padding;
+    
+    &-is-active {
+      color: $nav-breacrumbs-link-color;
+    }
+  }
+
+  &-item,
+  &-link {
+    line-height: $nav-line-height;
+  }
+
+  &-link {
+    // Styles spécifiques aux liens de navigation
+    height: 100%;
+    width: 100%;
+    font-size: $nav-link-font-size;
+    text-decoration: none;
+    color: $nav-link-default-color;
+
+    &:hover {
+      color: $nav-link-hover-color;
+    }
+  }
+
+  &.breadcrumbs {
+    // Styles pour la navigation de type "breadcrumbs"
+    li {
+      a {
+        display: initial;
+        color: $nav-breacrumbs-link-color;
+        
+        &.is-active {
+          color: $nav-breacrumbs-link-active-color;
+        }
+      }
+
+      &:not(:first-child) {
+        &::before {
+          display: inline-block;
+          padding-right: 0.5rem;
+          padding-left: 0.5rem;
+          color: #6c757d;
+          content: "/";
+        }
+      }
+    }
+  }
+
+  &.tabs {
+    // Styles pour la navigation de type "tabs"
+    @extend .bb; // Ajoute une bordure en bas
+    
+    .nav {
+      &-link {
+        position: relative;
+        
+        &:hover {
+          &::after {
+            background-color: $active-tab-background-color;
+          }
+        }
+
+        &::after {
+          width: 0%;
+          content: "";
+          height: 1px;
+          display: block;
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          transition: $active-tab-transition;
+        }
+
+        &.is-active {
+          color: $active-tab-color;
+          
+          &::after {
+            width: 100%;
+            background-color: $active-tab-background-color;
+          }
+        }
+      }
+    }
+
+    &.outline {
+      .nav {
+        &-link {
+          &.is-active {
+            @extend .bt;
+            @extend .bx;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+
+            &::after {
+              transition: none;
+            }
+          }
+
+          &::after {
+            transition: none;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.horizontal,
+.breadcrumbs,
+.tabs {
+  // Styles pour les éléments de navigation horizontale, breadcrumbs et tabs
+  display: flex;
+
+  &.full {
+    width: 100%;
+    
+    li {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    
+    a {
+      text-align: center;
+    }
+  }
+}

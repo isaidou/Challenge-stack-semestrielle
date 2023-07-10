@@ -1,0 +1,10 @@
+.expandible {
+  height: 0;  // Hauteur initiale de l'élément est de 0, ce qui signifie qu'il est masqué.
+  overflow: hidden;  // Tout contenu dépassant de l'élément sera caché.
+  display: none;  // L'élément est initialement masqué.
+  transition: $expandible-transtion $expandible-transtion-time $expandible-transtion-ease;  // Ajoute une transition pour une animation fluide lors de l'expansion ou de la réduction de la hauteur.
+
+  .show {
+    display: block;  // Lorsque la classe .show est appliquée à l'élément, il est affiché en utilisant la valeur "block".
+  }
+}

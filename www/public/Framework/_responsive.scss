@@ -1,0 +1,125 @@
+/**
+ * Mixin pour créer des colonnes pour un point de rupture spécifique.
+ * Il définit les différentes propriétés et classes liées aux colonnes, tels que la largeur, les fractions de largeur, les compteurs de colonnes, les marges, les rembourrages, etc.
+ * Le point de rupture est déterminé par la valeur de $breakpoint.
+ * Le préfixe est utilisé pour générer des classes spécifiques au point de rupture.
+ */
+ @mixin create-columns-for-breakpoint($breakpoint, $prefix) {
+  @media (min-width: $breakpoint) {
+    // Création des classes pour la collapsibilité de la navbar
+    @include create-navbar-collapse-for-breakpoint($prefix);
+
+    // Classes pour masquer et afficher des éléments
+    .hide-#{$prefix} {
+      display: none;
+    }
+    .show-#{$prefix} {
+      display: block;
+    }
+
+    // Classe container spécifique au point de rupture
+    .container-#{$prefix} {
+      max-width: $breakpoint;
+    }
+
+    // Création des colonnes et fractions de largeur
+    @include create-columns($prefix);
+    @include create-width-fractions-for-breakpoint($prefix, 12);
+    @include create-width-fractions-for-breakpoint($prefix, 6);
+    @include create-width-fractions-for-breakpoint($prefix, 5);
+    @include create-width-fractions-for-breakpoint($prefix, 4);
+    @include create-width-fractions-for-breakpoint($prefix, 3);
+    @include create-width-fractions-for-breakpoint($prefix, 2);
+
+    // Création des compteurs de colonnes
+    @for $i from 1 through $grid-columns {
+      .col-c-#{$prefix}-#{$i} {
+        column-count: $i;
+      }
+    }
+
+    // Création des poids de police
+    @each $font-weight-name, $font-weight-value in $font-weights {
+      @include font-weight-for-breakpoint(
+        $font-weight-value,
+        $font-weight-name,
+        $prefix
+      );
+    }
+
+    // Création des directions de flex
+    @each $direction-name, $direction in $flex-directions {
+      .flex-direction-#{$prefix}-#{$direction-name} {
+        flex-direction: $direction;
+      }
+    }
+
+    // Création des espacements
+    @for $i from 0 through $lop-size {
+      .gap-#{$prefix}-#{$i} {
+        gap: 0.25rem * $i;
+      }
+      @include create-margin-for-breakpoint($i, $breakpoint, $prefix);
+      @include create-padding-size-for-breakpoint($i, $breakpoint, $prefix);
+    }
+
+    // Collapsibilité des sidebars
+    .sidebar.sidebar-collapse-#{$prefix} {
+      position: sticky;
+      transform: none;
+      border-right: 0;
+      z-index: 0;
+      &:not(.expanded) {
+        transform: none;
+      }
+      .expand-btn {
+        display: none;
+      }
+    }
+
+    // Classes pour les différentes valeurs de display
+    @each $display in $displays-value {
+      .display-#{$prefix}-#{$display} {
+        display: $display;
+      }
+    }
+
+    // Classes pour les différentes positions
+    @each $position in $positions {
+      .#{$position}-#{$prefix} {
+        position: $position;
+      }
+    }
+
+    // Classes pour les différentes valeurs de overflow
+    @each $overflow in $overflow-values {
+      .overflow-#{$prefix}-#{$overflow} {
+        overflow: $overflow;
+      }
+      .overflow-x-#{$prefix}-#{$overflow} {
+        overflow-x: $overflow;
+      }
+      .overflow-y-#{$prefix}-#{$overflow} {
+        overflow-y: $overflow;
+      }
+    }
+
+    // Création des tailles de police
+    @each $font-size-name, $font-size in $font-sizes {
+      @include create-font-size($font-size, $prefix, -#{$font-size-name});
+    }
+
+    @each $font-size-name, $font-size in $text-font-sizes {
+      @include create-font-size($font-size, $prefix, -#{$font-size-name});
+    }
+
+    @each $font-size-name, $font-size in $heading-font-sizes {
+      @include create-font-size($font-size, $prefix, -#{$font-size-name});
+    }
+  }
+}
+
+// Boucle pour créer les colonnes pour chaque point de rupture défini
+@each $prefix, $value in $breakpoints {
+  @include create-columns-for-breakpoint($value, $prefix);
+}

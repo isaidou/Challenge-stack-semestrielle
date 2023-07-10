@@ -1,0 +1,65 @@
+// Applique un style de tableau à largeur fixe
+.table-fixed {
+  table-layout: fixed;
+}
+
+// Applique un style de tableau à largeur automatique
+.table-fixed {
+  table-layout: auto;
+}
+
+// Classe de base pour les tables
+.table, table {
+  border-collapse: collapse;
+  background-color: $table-bg-color;
+
+  th {
+    font-weight: $table-heading-font-weight;
+  }
+
+  th,
+  td {
+    font-size: $table-heading-font-size;
+    padding: $table-cell-padding;
+    border-bottom: $table-border-width $table-border-style $table-border-color;
+  }
+
+  // Tableau à largeur 100%
+  &-full {
+    width: 100%;
+  }
+
+  // Conteneur pour les tableaux avec débordement horizontal
+  &-container {
+    max-width: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+  }
+
+  // Ajoute des bordures à toutes les cellules du tableau
+  &-with-border {
+    td,
+    th {
+      border-width: $table-border-width;
+      border-style: $table-border-style;
+      border-color: $table-border-color;
+    }
+  }
+
+  // Applique une couleur de fond alternative aux lignes impaires du tableau
+  &-striped {
+    tr:nth-child(2n) {
+      background-color: $table-striped-bg-color;
+    }
+  }
+
+  // Change la couleur de fond des lignes du tableau au survol de la souris
+  &-with-hover {
+    tr {
+      transition: all 0.2s ease-in-out;
+    }
+    tr:hover {
+      background-color: $table-hover-bg-color;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@each $value in $displays-value {
+  // Crée une classe pour chaque valeur de la variable $displays-value
+  .display-#{$value} {
+    display: $value;
+  }
+}

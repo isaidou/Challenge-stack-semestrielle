@@ -1,0 +1,5 @@
+// Boucle pour générer les classes de marge
+@for $i from 0 through $lop-size {
+  // Appel de la fonction create-margin() avec la valeur de $i
+  @include create-margin($i);
+}

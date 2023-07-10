@@ -1,0 +1,32 @@
+         
+             //Exention des classes de base
+
+
+// Placeholder pour appliquer la propriété 'display: flex;'
+%is-flex {
+  display: flex;
+}
+
+// Placeholder pour appliquer la propriété 'flex-direction: row;'
+%-is-wrap-row {
+  flex-direction: row;
+}
+
+// Placeholder pour appliquer la propriété 'border: 1px solid rgba(0, 0, 0, 0.12);'
+%is-default-border {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+// Placeholder pour appliquer les propriétés 'border-width: 1px;' et 'border-style: solid;'
+%is-button-outline {
+  border-width: 1px;
+  border-style: solid;
+}
+
+// Classe pour appliquer 'padding-inline-start: 0;' et 'margin-top: 0;' à tous les éléments <li> enfants
+.padding-inline-0 {
+  padding-inline-start: 0;
+  li {
+    margin-top: 0;
+  }
+}

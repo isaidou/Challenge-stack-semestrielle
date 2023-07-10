@@ -1,0 +1,18 @@
+// Boucle @for pour générer des classes de transition d'opacité pour les états hover.
+@for $i from 0 through 20 {
+  $prefix: $i * 5;  // Calcul du préfixe en multipliant $i par 5.
+  .hover\:opcty-#{$prefix}:hover {
+    opacity: 0.05 * $i;  // Définit l'opacité en fonction de $i.
+  }
+}
+
+.hover\:shadow-none:hover {
+  box-shadow: none;  // Définit l'ombre de la boîte comme "none" lorsqu'elle est survolée.
+}
+
+// Boucle @each pour générer des classes de transition d'ombre de boîte pour les états hover.
+@each $shadow-size-prefix, $shadow in $box-shadow-sizes {
+  .hover\:shadow-#{$shadow-size-prefix}:hover {
+    box-shadow: $shadow;  // Définit l'ombre de la boîte en fonction de $shadow.
+  }
+}

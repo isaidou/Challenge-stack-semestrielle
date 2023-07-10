@@ -1,0 +1,38 @@
+// Cette mixin génère des classes pour le poids de la police en fonction d'un point de rupture (breakpoint).
+
+// Déclaration de la mixin avec trois paramètres :
+// - $weight : le poids de la police à appliquer
+// - $prefix : un préfixe pour la classe générée
+// - $breakpoint-prefix : un préfixe spécifique pour le point de rupture
+
+@mixin font-weight-for-breakpoint($weight, $prefix, $breakpoint-prefix) {
+  // Génère une classe avec le préfixe du point de rupture suivi du préfixe spécifique et le poids de la police
+  .font-#{$breakpoint-prefix}-#{$prefix} {
+    font-weight: $weight;
+  }
+}
+
+// Cette mixin génère des classes pour la taille de police en fonction d'un préfixe et d'un éventuel suffixe.
+// Elle prend deux paramètres :
+// - $size : la taille de la police à appliquer
+// - $prefix : un préfixe pour la classe générée
+// - $suffix : un suffixe optionnel pour la classe générée (par défaut, une chaîne vide)
+
+@mixin create-font-size($size, $prefix, $suffix: "") {
+  // Génère une classe avec le préfixe suivi du suffixe et la taille de la police
+  .font-#{$prefix}#{$suffix} {
+    font-size: $size;
+  }
+}
+
+// Cette mixin génère des classes pour la couleur de texte en fonction d'un nom spécifique et d'une couleur.
+// Elle prend deux paramètres :
+// - $name : le nom spécifique pour la classe générée
+// - $color : la couleur à appliquer
+
+@mixin create-text-for-color($name, $color) {
+  // Génère une classe avec le préfixe "text-" suivi du nom spécifique et une classe "hover:text-" pour les effets hover
+  .text-#{$name}, .hover\:text-#{$name} {
+    color: $color;
+  }
+}

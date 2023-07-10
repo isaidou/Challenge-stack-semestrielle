@@ -1,0 +1,5 @@
+// Boucle pour générer les classes de taille de padding
+@for $i from 0 through $lop-size {
+  // Appel d'une mixin pour générer la classe de taille de padding
+  @include create-padding-size($i);
+}

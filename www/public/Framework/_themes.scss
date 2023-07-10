@@ -1,0 +1,13 @@
+/**
+ * Boucle pour générer des thèmes à partir des couleurs définies dans la variable $theme-colors.
+ * Chaque thème correspond à une couleur spécifique.
+ */
+ @each $theme, $color in $theme-colors {
+  @include create-theme($theme, $color);
+}
+
+/**
+ * Inclusion du mixin create-theme pour générer un thème 'transparent' avec une couleur RGBA.
+ * Cela permet d'ajouter un thème transparent qui peut être utilisé lorsque la transparence est nécessaire.
+ */
+@include create-theme('transparent', rgba(0, 0, 0, 0));

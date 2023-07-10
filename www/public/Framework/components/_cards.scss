@@ -1,0 +1,93 @@
+/**
+ * Placeholder de style `%card-padding` pour définir un rembourrage commun pour les cartes.
+ */
+ %card-padding {
+  padding: $card-padding;
+}
+
+/**
+ * Sélecteur de classe `.card` pour les éléments de carte.
+ * Il définit les styles de base pour les cartes, tels que la bordure, le bord arrondi, le débordement, etc.
+ * Il inclut également des styles spécifiques pour différentes parties de la carte, comme l'en-tête, le corps, l'avatar, le titre, etc.
+ */
+.card {
+  border-width: $card-border-width;
+  border-style: $card-border-style;
+  border-color: $card-border-color;
+  border-radius: $card-border-radius;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  /** En-tête de la carte */
+  &-head {
+    @extend %card-padding;
+    @extend %is-flex;
+    flex-wrap: nowrap;
+  }
+
+  /** Corps de la carte */
+  &-body {
+    @extend %card-padding;
+    padding-top: 0;
+
+    /** Style spécifique pour les paragraphes à l'intérieur du corps de la carte */
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  /** Avatar de la carte */
+  &-avatar {
+    width: $card-avatar-width;
+    height: $card-avatar-height;
+    margin-right: $card-avatar-margin-right;
+  }
+
+  /** Titre et sous-titre de la carte */
+  &-title,
+  &-subtitle {
+    margin-bottom: 0;
+  }
+
+  /** Image de la carte */
+  &-img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /** Style du titre de la carte */
+  &-title {
+    font-size: $card-title-font-size;
+    font-weight: $card-title-font-weight;
+    color: inherit;
+    line-height: $card-title-line-height;
+    margin-bottom: 0;
+  }
+
+  /** Style du sous-titre de la carte */
+  &-subtitle {
+    font-size: $card-subtitle-font-size;
+    font-weight: $card-subtitle-font-weight;
+    opacity: $card-subtitle-opacity;
+    line-height: $card-subtitle-line-height;
+  }
+
+  /** Pied de page de la carte */
+  &-footer {
+    border-color: inherit;
+  }
+
+  /** Actions de la carte */
+  &-actions {
+    border-top-width: $card-border-width;
+    border-top-color: inherit;
+    border-top-style: $card-border-style;
+
+    /** Style spécifique pour le premier bouton à l'intérieur des actions */
+    .btn {
+      &:first-child {
+        border-bottom-left-radius: 5px;
+      }
+    }
+  }
+}

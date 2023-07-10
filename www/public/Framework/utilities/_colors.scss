@@ -1,0 +1,19 @@
+// Définit le fond et la couleur pour la classe .bg-white
+.bg-white {
+  @include get-background-and-color(#fff);
+}
+
+// Définit le fond et la couleur pour la classe .bg-black
+.bg-black {
+  @include get-background-and-color(#000);
+}
+
+// Parcourt chaque couleur dans le map $colors
+@each $color-name, $variants in $colors {
+  
+  // Récupère la variante "600" de la couleur actuelle
+  $main-color: map-get($variants, "600");
+
+  // Crée un thème pour la variante "600" de la couleur actuelle
+  @include create-theme(#{$color-name}-600, $main-color);
+}

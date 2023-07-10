@@ -1,0 +1,22 @@
+/// Crée une classe de bordure (.b-*) en fonction d'un nom et d'une couleur de thème
+/// @param {String} $theme-name - Nom du thème/couleur
+/// @param {String} $color - Couleur utilisée dans le thème
+/// @param {Number} $is-hover - [0] 1 va créer une classe hover
+@mixin create-border-for-theme($name, $color, $is-hover: 0) {
+  // Classe de bordure normale
+  .b-#{$name},
+  .hover\:b-#{$name}:hover {
+    border-color: $color!important;
+  }
+}
+
+/// Crée une classe de bordure (.b-*) en fonction d'un nom et d'une couleur
+/// @param {String} $name - Nom de la bordure
+/// @param {String} $color - Couleur de la bordure
+@mixin create-border-for-color($name, $color) {
+  // Classe de bordure normale
+  .b-#{$name},
+  .hover\:b-#{$name} {
+    border-color: $color;
+  }
+}

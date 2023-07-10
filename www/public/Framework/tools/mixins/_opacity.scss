@@ -1,0 +1,4 @@
+// Mixin pour définir l'opacité d'un élément
+@mixin create-opacity($value) {
+    opacity: $value; // Définit l'opacité de l'élément en utilisant la valeur spécifiée
+}

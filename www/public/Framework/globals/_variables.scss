@@ -1,0 +1,438 @@
+@import "colors"; // Importe un fichier "colors.scss" contenant les couleurs définies
+
+$default-border: 1px solid rgba(0, 0, 0, 0.12); // Définit une valeur par défaut pour les bordures
+$font-color: rgba(0, 0, 0, 0.8) !default; // Définit une couleur par défaut pour le texte
+
+//==== UTILITIES ===//
+
+// positions
+
+$positions: (fixed, absolute, relative, sticky, initial, inherit); // Définit les positions possibles
+
+// Flex
+
+$justify-positions: ( // Définit les positions de justification pour les conteneurs flex
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  around: space-around,
+  between: space-between,
+  evenly: space-evenly,
+);
+
+$align-positions: ( // Définit les positions d'alignement pour les conteneurs flex
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+  baseline: baseline,
+);
+
+$flex-directions: ( // Définit les directions possibles pour les conteneurs flex
+  "col": column,
+  "row": row,
+  "row-reverse": row-reverse,
+  "col-reverse": column-reverse,
+);
+
+// displays
+
+$displays-value: ( // Définit les valeurs possibles pour la propriété "display"
+  inline,
+  block,
+  contents,
+  flex,
+  grid,
+  inline-block,
+  inline-flex,
+  inline-grid,
+  inline-table,
+  list-item,
+  run-in,
+  table,
+  table-caption,
+  table-column-group,
+  table-header-group,
+  table-footer-group,
+  table-row-group,
+  table-cell,
+  table-column,
+  table-row,
+  none,
+  initial,
+  inherit
+);
+
+// overflow values
+
+$overflow-values: (visible, hidden, clip, scroll, auto); // Définit les valeurs possibles pour la propriété "overflow"
+
+//==== END OF UTILITIES ===//
+
+//grid
+
+$grid-columns: 12; // Définit le nombre de colonnes pour la grille
+$pre-font-size: 0.875rem; // Définit la taille de police par défaut pour les préfixes de classe
+
+// fonts-families
+
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", // Définit la famille de polices de base
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif !default;
+
+$font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", // Définit la famille de polices monospace
+  "Courier New", monospace !default;
+
+//font sizes use in letter
+
+$font-sizes: ( // Définit les tailles de police pour les classes de lettre
+  "normal": 1rem,
+  "small": 0.875rem,
+  "caption": 0.75rem,
+);
+
+//font weights use in classes
+
+$font-weights: ( // Définit les poids de police pour les classes
+  "thin": 100,
+  "extralight": 200,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "black": 800,
+  "extra-black": 900,
+);
+
+$heading-font-sizes: ( // Définit les tailles de police pour les titres de niveau h1 à h6
+  "h1": 2em,
+  "h2": 1.5em,
+  "h3": 1.17em,
+  "h4": 1.12rem,
+  "h5": 0.83em,
+  "h6": 0.75em,
+);
+
+$text-font-sizes: ( // Définit les tailles de police pour les classes de texte
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "normal": 1rem,
+  "lg": 1.125rem,
+  "xl": 1.25rem,
+  "2xl": 1.5rem,
+  "3xl": 1.875rem,
+  "4xl": 2.25rem,
+  "5xl": 3rem,
+  "6xl": 3.75rem,
+  "7xl": 4.5rem,
+  "8xl": 6rem,
+  "9xl": 8rem,
+);
+
+$viewport-from: 1 !default; // Définit la valeur de départ pour les points de rupture de la fenêtre d'affichage
+$viewport-steps: 5; // Définit le nombre de pas entre les points de rupture de la fenêtre d'affichage
+$viewport-to: 100 !default; // Définit la valeur de fin pour les points de rupture de la fenêtre d'affichage
+
+$font-size: 16px; // Définit la taille de police de base
+$line-height: 1.5; // Définit la hauteur de ligne de base
+
+$default-border-color: rgba(0, 0, 0, 0.12); // Définit la couleur par défaut pour les bordures
+$default-border-radius: 0.5rem !default; // Définit le rayon de bordure par défaut
+
+$lop-size: 24 !default; // Définit le nombre d'itérations pour les marges et les paddings
+
+$xxl-breakpoint: 1400px !default; // Définit le point de rupture pour les écrans très grands
+$xl-breakpoint: 1280px !default; // Définit le point de rupture pour les écrans grands
+$lg-breakpoint: 1024px !default; // Définit le point de rupture pour les écrans larges
+$md-breakpoint: 768px !default; // Définit le point de rupture pour les écrans moyens
+$sm-breakpoint: 576px !default; // Définit le point de rupture pour les petits écrans
+
+$breakpoints: ( // Définit les points de rupture avec leurs noms
+  "sm": $sm-breakpoint,
+  "md": $md-breakpoint,
+  "lg": $lg-breakpoint,
+  "xl": $xl-breakpoint,
+  "xxl": $xxl-breakpoint,
+);
+
+$fractions: (12, 6, 4, 3, 2); // Définit les fractions pour les grilles fractionnées
+
+$locations: ( // Définit les positions pour les classes de bordure
+  "t": top,
+  "l": left,
+  "b": bottom,
+  "r": right,
+);
+
+$corners: ( // Définit les coins pour les classes de bordure
+  "t": top,
+  "b": bottom,
+);
+
+$sides: ( // Définit les côtés pour les classes de bordure
+  "l": left,
+  "r": right,
+);
+
+//body
+$body-background-color: rgba(0, 0, 0, 0) !default; // Définit la couleur d'arrière-plan du corps
+
+//links
+$link-color: #1976d2 !default; // Définit la couleur des liens
+$border-radius: 5px !default; // Définit le rayon de bordure par défaut pour les éléments
+
+//navbar
+$nav-bar-height: 56px; // Définit la hauteur de la barre de navigation
+$nav-bar-default-bg-color: #fff !default; // Définit la couleur d'arrière-plan par défaut de la barre de navigation
+$nav-bar-border-color: #e0e0e0 !default; // Définit la couleur de bordure par défaut de la barre de navigation
+$nav-bar-border-width: 1px !default; // Définit la largeur de bordure par défaut de la barre de navigation
+$nav-brand-font-size: 1.5rem !default; // Définit la taille de police du nom de marque dans la barre de navigation
+$nav-brand-font-weigh: 700 !default; // Définit le poids de police du nom de marque dans la barre de navigation
+$nav-brand-padding: 0.5rem 1rem !default; // Définit le rembourrage du nom de marque dans la barre de navigation
+$nav-breacrumbs-link-color: rgb(33, 150, 243); // Définit la couleur des liens de navigation
+$nav-breacrumbs-link-active-color: rgba(0, 0, 0, 0.53); // Définit la couleur des liens de navigation actifs
+$navbar-link-padding: 1rem !default; // Définit le rembourrage des liens de la barre de navigation
+$navbar-link-font-weight: 500 !default; // Définit le poids de police des liens de la barre de navigation
+$navbar-link-color: rgba(0, 0, 0, 53); // Définit la couleur des liens de la barre de navigation
+
+// nav
+$nav-link-default-color: #212121 !default; // Définit la couleur par défaut des liens de navigation
+$nav-link-font-size: 1rem !default; // Définit la taille de police des liens de navigation
+$nav-line-height: 1.5 !default; // Définit la hauteur de ligne des liens de navigation
+$nav-link-padding: 0.5rem 1rem !default; // Définit le rembourrage des liens de navigation
+$nav-link-hover-color: map-get(map-get($colors, "blue"), "600"); // Définit la couleur au survol des liens de navigation
+
+$navbar-collpase-position: relative !default; // Définit la position par défaut de la barre de navigation rétractable
+$navbar-collapse-width: 100vw !default; // Définit la largeur par défaut de la barre de navigation rétractable
+$navbar-collpase-transiton: all 0.3s ease-in-out !default; // Définit la transition par défaut de la barre de navigation rétractable
+
+// nav tabs
+$tabs-padding:1rem 0.5rem; // Définit le rembourrage des onglets de navigation
+$active-tab-color:#2196f3; // Définit la couleur des onglets de navigation actifs
+$active-tab-font-weigth: 500; // Définit le poids de police des onglets de navigation actifs
+$active-tab-background-color:#2196f3; // Définit la couleur d'arrière-plan des onglets de navigation actifs
+$active-tab-transition:all 0.3s ease-in-out; // Définit la transition des onglets de navigation actifs
+
+//contianer
+$container-padding: 1rem !default; // Définit le rembourrage des conteneurs
+
+//messages
+$message-padding: 1rem !default; // Définit le rembourrage des messages
+$message-padding-y: 1rem !default; // Définit le rembourrage vertical des messages
+$message-padding-x: 1rem !default; // Définit le rembourrage horizontal des messages
+$message-margin-bottom: 0.5rem !default; // Définit la marge inférieure des messages
+$message-border-width: 1px !default; // Définit la largeur de bordure des messages
+$message-border-radius: 5px !default; // Définit le rayon de bordure des messages
+
+/*----messages success----*/
+$message-success-color: #1b5e20 !default; // Définit la couleur du texte des messages de succès
+$message-success-border: #4caf50 !default; // Définit la couleur de la bordure des messages de succès
+$message-succes-background: #c8e6c9 !default; // Définit la couleur d'arrière-plan des messages de succès
+
+$message-danger-color: #b71c1c !default; // Définit la couleur du texte des messages d'erreur
+$message-danger-border: #f44336 !default; // Définit la couleur de la bordure des messages d'erreur
+$message-danger-background: #ffebee !default; // Définit la couleur d'arrière-plan des messages d'erreur
+
+$color-error: #f44336 !default; // Définit la couleur d'erreur par défaut
+$background: #fff !default; // Définit la couleur d'arrière-plan par défaut
+
+//headings h1
+$heading-font-weigth: 600 !default; // Définit le poids de police par défaut pour les titres
+$heading-font-base-size: 64px !default; // Définit la taille de police de base pour les titres
+$base-font-weigth: 400 !default; // Définit le poids de police par défaut pour le texte de base
+$base-font-size: 16px !default; // Définit la taille de police de base pour le texte de base
+
+// Borders
+$border-default-color: #e0e0e0 !default; // Définit la couleur de bordure par défaut
+
+// Theme colors
+$primary: rgb(51, 133, 255); // Définit la couleur primaire du thème
+$secondary: #eee !default; // Définit la couleur secondaire du thème
+$danger: rgb(255, 82, 82); // Définit la couleur de danger du thème
+$success: rgb(60, 223, 114); // Définit la couleur de succès du thème
+$warning: rgb(255, 200, 20); // Définit la couleur d'avertissement du thème
+$info: rgb(17, 227, 255); // Définit la couleur d'information du thème
+$bg-color: #fff !default; // Définit la couleur d'arrière-plan par défaut du thème
+
+//theme colors
+$theme-colors: () !default; // Définit un tableau vide pour les couleurs de thème
+$theme-colors: map-merge( // Fusionne les couleurs définies avec les couleurs de thème existantes
+  (
+    "dark": #212121,
+    "light": #e0e0e0,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "success": $success,
+    "secondary": $secondary,
+    "primary": $primary,
+    "transparent": rgba(0, 0, 0, 0),
+    "white": #fff,
+  ),
+  $theme-colors
+);
+
+//Buttons
+$button-padding: 0.5rem 1rem !default; // Définit le rembourrage des boutons
+$button-bg-color: rgba(255, 255, 255, 1) !default; // Définit la couleur d'arrière-plan des boutons
+$button-border-color: #e0e0e0 !default; // Définit la couleur de bordure des boutons
+$button-radius: 0.25rem !default; // Définit le rayon de bordure des boutons
+$button-focus-outline-style: solid !default; // Définit le style de contour au focus des boutons
+$button-focus-outline-width: 1px !default; // Définit la largeur de contour au focus des boutons
+$button-focus-outline-color: rgba(0, 0, 0, 12) !default; // Définit la couleur de contour au focus des boutons
+$button-focus-outline: none !default; // Définit le contour au focus par défaut des boutons
+$flat-button-hover-color: rgba(#000, 0.05); // Définit la couleur au survol des boutons plats
+
+//Forms
+$form-field-margin-bottom: 1rem !default; // Définit la marge inférieure des champs de formulaire
+$form-field-label-size: 1rem !default; // Définit la taille de police des étiquettes des champs de formulaire
+$form-field-label-weigth: 700 !default; // Définit le poids de police des étiquettes des champs de formulaire
+$form-field-label-mb: 0.5rem !default; // Définit la marge inférieure des étiquettes des champs de formulaire
+$form-field-label-heigth: 1.25 !default; // Définit la hauteur de ligne des étiquettes des champs de formulaire
+$form-field-label-color: rgba(0, 0, 0, 0.87) !default; // Définit la couleur des étiquettes des champs de formulaire
+
+$form-input-padding: 0.5rem 1rem !default; // Définit le rembourrage des champs de saisie
+$form-input-font-size: 1rem !default; // Définit la taille de police des champs de saisie
+$form-input-font-color: rgba(0, 0, 0, 0.6) !default; // Définit la couleur de police des champs de saisie
+$form-input-placeholder-color: rgba(0, 0, 0, 0.12) !default; // Définit la couleur de l'espace réservé des champs de saisie
+$form-input-border-width: 1px !default; // Définit la largeur de bordure des champs de saisie
+$form-input-border-color: $default-border-color !default; // Définit la couleur de bordure des champs de saisie
+$form-input-border-radius: 0.25rem !default; // Définit le rayon de bordure des champs de saisie
+$form-input-background-color: #fff !default; // Définit la couleur d'arrière-plan des champs de saisie
+$form-input-active-border-width: $form-input-border-width !default; // Définit la largeur de bordure active des champs de saisie
+$form-input-active-border-color: $primary!default; // Définit la couleur de bordure active des champs de saisie
+$form-input-invalid-color: #b71c1c !default; // Définit la couleur des champs de saisie invalides
+$form-text-color: rgba(0, 0, 0, 0.6) !default; // Définit la couleur du texte des champs de texte
+$form-text-size: 0.75rem !default; // Définit la taille de police des champs de texte
+$form-input-sm-font-size: 0.865rem !default; // Définit la taille de police des petits champs de saisie
+$form-input-sm-padding: 0.5rem 0.75 !default;; // Définit le rembourrage des petits champs de saisie
+$form-input-lg-font-size: 1.25rem !default; // Définit la taille de police des grands champs de saisie
+$form-input-lg-padding: 0.75 1.25rem !default; // Définit le rembourrage des grands champs de saisie
+$form-input-xl-font-size: 1.5rem !default; // Définit la taille de police des champs de saisie très grands
+$form-input-xl-padding: 1rem 1.5rem !default; // Définit le rembourrage des champs de saisie très grands
+
+/*TABLES*/
+$table-bg-color: #fff !default; // Définit la couleur d'arrière-plan des tableaux
+$table-heading-font-size: 1rem !default; // Définit la taille de police des en-têtes de tableau
+$table-heading-font-weight: 700 !default; // Définit le poids de police des en-têtes de tableau
+$table-cell-padding: 0.5em 0.75em !default; // Définit le rembourrage des cellules de tableau
+$table-border-width: 1px !default; // Définit la largeur de bordure des tableaux
+$table-border-style: solid !default; // Définit le style de bordure des tableaux
+$table-border-color: rgba(0, 0, 0, 0.12) !default; // Définit la couleur de bordure des tableaux
+$table-striped-bg-color: #f5f5f5 !default; // Définit la couleur d'arrière-plan des lignes alternées des tableaux
+$table-hover-bg-color: #e0e0e0 !default; // Définit la couleur d'arrière-plan des lignes au survol des tableaux
+$font-size: 16px !default; // Définit la taille de police par défaut
+$nav-bar-padding: 0.5rem 1rem !default; // Définit le rembourrage de la barre de navigation
+
+/*LIST*/
+$list-border: 1px solid rgba(0, 0, 0, 0.12); // Définit la bordure par défaut des listes
+$list-border-radius: 5px !default; // Définit le rayon de bordure par défaut des listes
+$list-item-padding: 0.5rem 1rem !default; // Définit le rembourrage des éléments de liste
+$list-item-hover-color: #eee !default; // Définit la couleur au survol des éléments de liste
+$list-margin-bottom: 1rem !default; // Définit la marge inférieure des listes
+$list-item-separated-padding: 0.5rem 1rem; // Définit le rembourrage des éléments de liste séparés
+$list-item-separated-border: $default-border; // Définit la bordure des éléments de liste séparés
+$list-item-serparates-radius: $border-radius; // Définit le rayon de bordure des éléments de liste séparés
+
+/*cards*/
+$card-padding: 1rem !default; // Définit le rembourrage des cartes
+$card-border-width: 1px !default; // Définit la largeur de bordure des cartes
+$card-border-style: solid !default; // Définit le style de bordure des cartes
+$card-border-color: rgba(0, 0, 0, 0.12); // Définit la couleur de bordure des cartes
+$card-border-radius: 5px !default; // Définit le rayon de bordure des cartes
+
+$card-title-font-size: 20px !default; // Définit la taille de police du titre des cartes
+$card-title-font-weight: 600 !default; // Définit le poids de police du titre des cartes
+$card-title-font-color: rgba(0, 0, 0, 0.8); // Définit la couleur de police du titre des cartes
+$card-title-line-height: 1.2 !default; // Définit la hauteur de ligne du titre des cartes
+
+$card-subtitle-font-size: 16px !default; // Définit la taille de police du sous-titre des cartes
+$card-subtitle-font-weight: 400 !default; // Définit le poids de police du sous-titre des cartes
+$card-subtitle-opacity: 0.53; // Définit l'opacité du sous-titre des cartes
+$card-subtitle-line-height: 1.25 !default; // Définit la hauteur de ligne du sous-titre des cartes
+
+$card-avatar-width: 40px !default; // Définit la largeur de l'avatar des cartes
+$card-avatar-height: 40px !default; // Définit la hauteur de l'avatar des cartes
+$card-avatar-margin-right: 1rem !default; // Définit la marge droite de l'avatar des cartes
+
+
+
+//sidebar
+$sidebar-width: 300px !default; // Définit la largeur de la barre latérale
+$sidebar-height: calc(100vh - #{$nav-bar-height} + 1px) !default; // Définit la hauteur de la barre latérale
+$sidebar-position: relative !default; // Définit la position de la barre latérale
+$sidebar-border-color: $border-default-color !default; // Définit la couleur de bordure de la barre latérale
+$sidebar-border-width: 1px !default; // Définit la largeur de bordure de la barre latérale
+$sidebar-border-style: solid !default; // Définit le style de bordure de la barre latérale
+$sidebar-background-color: rgba(0, 0, 0, 0); // Définit la couleur d'arrière-plan de la barre latérale
+$sidebar-z-index: 30; // Définit l'index z de la barre latérale
+$sidebar-transition-property: all !default; // Définit la propriété de transition de la barre latérale
+$sidebar-transition-duration: 0.3s !default; // Définit la durée de transition de la barre latérale
+$sidebar-transition-ease: ease-in-out !default; // Définit l'interpolation de transition de la barre latérale
+$sidebar-expand-btn-width: 57px !default; // Définit la largeur du bouton d'expansion de la barre latérale
+$sidebar-expand-btn-transform: rotate(180deg); // Définit la transformation du bouton d'expansion de la barre latérale
+$sidebar-overflow: visible !default; // Définit le débordement de la barre latérale
+
+// Expandible
+$expandible-transtion: height !default; // Définit la propriété de transition pour l'expansion
+$expandible-transtion-time: 100ms !default; // Définit la durée de transition pour l'expansion
+$expandible-transtion-ease: ease-in-out !default; // Définit l'interpolation de transition pour l'expansion
+
+// opacity
+$opacity-range: 20; // Définit la plage d'opacité
+
+// modals
+$modal-background-background-color: rgba(0, 0, 0, 0.37) !default; // Définit la couleur d'arrière-plan du fond des modales
+$modal-background-z-index: 12 !default; // Définit l'index z du fond des modales
+$modal-content-max-height: 75vh !default; // Définit la hauteur maximale du contenu des modales
+$modal-content-background-color: #fff !default; // Définit la couleur d'arrière-plan du contenu des modales
+$modal-content-boder-radius: 0.25rem !default; // Définit le rayon de bordure du contenu des modales
+$modal-title-font-size: 1.5rem; // Définit la taille de police du titre des modales
+$modal-title-font-weight: 600; // Définit le poids de police du titre des modales
+$modal-sizes: () !default; // Définit un tableau vide pour les tailles des modales
+$modal-padding: 1rem !default; // Définit le rembourrage des modales
+$modal-border: $default-border; // Définit la bordure des modales
+$modal-sizes: map-merge( // Fusionne les tailles définies avec les tailles de modales existantes
+  (
+    default: 600px,
+    xxl: 1400px,
+    xl: 1280px,
+lg: 720px,
+    sm: 350px,
+  ),
+  $modal-sizes
+);
+
+// shadows
+$box-shadow-sizes: () !default; // Définit un tableau vide pour les tailles d'ombres
+$box-shadow-color:rgba(0, 0, 0, 0.12) !default; // Définit la couleur par défaut des ombres
+$box-shadow-sizes: map-merge( // Fusionne les tailles définies avec les tailles d'ombres existantes
+  (
+    "sm": 0 0 0.25rem $box-shadow-color,
+    "md": 0 0 0.75rem $box-shadow-color,
+    "lg": 0 0 1.25rem $box-shadow-color,
+    "xl": 0 0 1.5rem $box-shadow-color,
+    "xxl": 0 0 2rem $box-shadow-color,
+  ),
+  $box-shadow-sizes
+);
+
+// notification
+
+$notification-padding: 1rem !default; // Définit le rembourrage des notifications
+$notification-width: 300px !default; // Définit la largeur des notifications
+$notification-boder: 1px solid #e0e0e0 !default; // Définit la bordure des notifications
+$notification-shadow: 0 0 3px rgba(0, 0, 0, 0.12) !default; // Définit l'ombre des notifications
+$notification-boder-radius: 0.25rem !default; // Définit le rayon de bordure des notifications
+$notification-title-font-weight: bold !default; // Définit le poids de police du titre des notifications
+$notification-title-font-size: 1.25rem !default; // Définit la taille de police du titre des notifications
+
+$fixed-positions: (top, bottom, left, right); // Définit les positions fixes possibles
+
+// Sizing
+$sizes: ( // Définit les tailles disponibles avec leurs plages
+  (from:0.5,to:18,"size":0.25),
+  (from:20,to: 4,"size":1rem)
+  (from:0.5,to:18,"size":2rem)
+);

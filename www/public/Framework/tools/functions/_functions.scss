@@ -1,0 +1,50 @@
+// Fonction pour déterminer la couleur du texte en fonction de la couleur de fond
+@function set-color($background) {
+  @if ($background == rgba(0, 0, 0, 0)) {
+    @return #000; // Retourne la couleur noire si la couleur de fond est transparente
+  }
+
+  $r: red($background); // Récupère la composante rouge de la couleur de fond
+  $g: green($background); // Récupère la composante verte de la couleur de fond
+  $b: blue($background); // Récupère la composante bleue de la couleur de fond
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114))/1000; // Calcule la valeur YIQ pour déterminer la luminosité
+
+  @if ($yiq >= 128) {
+    @return #212; // Retourne une couleur de texte sombre pour une couleur de fond claire
+  } @else {
+    @return #fff; // Retourne une couleur de texte claire pour une couleur de fond sombre
+  }
+}
+
+// Fonction pour vérifier si une variable est de type "map"
+@function is-map($var) {
+  @return type-of($var) == "map"; // Retourne vrai si la variable est de type "map"
+}
+
+// Fonction pour créer une bordure avec une couleur spécifiée
+@function create-border($color) {
+  @return 1px solid $color; // Retourne une bordure d'épaisseur 1px avec la couleur spécifiée
+}
+
+// Fonction pour définir la couleur de bordure en fonction de la couleur spécifiée
+@function set-border-color($color) {
+  @if ($color == rgba(0, 0, 0, 1)) {
+    @return $color; // Retourne la couleur telle quelle si c'est du noir opaque
+  }
+  @if ($color == rgba(255, 255, 255, 1)) {
+    @return #e0e0e0; // Retourne une couleur de bordure légèrement plus claire si c'est du blanc opaque
+  }
+  @return lighten($color, 50%); // Retourne une version éclaircie de la couleur de bordure pour les autres cas
+}
+
+// Mixin pour créer une propriété de largeur avec une valeur spécifiée
+@mixin create-width($width) {
+  width: $width; // Crée une propriété de largeur avec la valeur spécifiée
+}
+
+// Fonction pour obtenir les valeurs de couleur en fonction du nom de couleur et des variantes spécifiques
+@function get-color($color-name, $color-variant) {
+  $variants: mag-get($colors, $color-name); // Récupère les valeurs de couleur prédéfinies correspondant au nom de couleur
+  $variant: map-merge($variants, $color-variant); // Fusionne les valeurs de couleur spécifiques avec les valeurs prédéfinies
+  @return $variant; // Retourne les valeurs de couleur résultantes
+}

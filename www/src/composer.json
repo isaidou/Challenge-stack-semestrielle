@@ -1,10 +1,5 @@
 {
-    "autoload": {
-        "files": ["src/helpers.php"],
-        "psr-4": {
-            "App\\" : "www/src/"
-        }
-    },
+
     "require": {
         "phpmailer/phpmailer": "^6.5",
         "fakerphp/faker": "^1.16"

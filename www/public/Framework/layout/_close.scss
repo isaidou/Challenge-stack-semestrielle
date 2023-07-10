@@ -1,0 +1,28 @@
+.close {
+  width: 32px; /* Définit la largeur du bouton de fermeture */
+  height: 32px; /* Définit la hauteur du bouton de fermeture */
+  position: relative; /* Définit la position du bouton de fermeture */
+  background-color: inherit; /* Utilise la couleur de fond héritée */
+  border: none; /* Supprime la bordure du bouton de fermeture */
+  background-color: none; /* Supprime la couleur de fond du bouton de fermeture */
+  &::before,
+  &::after {
+    border-radius: 1px; /* Définit le rayon de bordure pour les lignes */
+    background-color: rgba($color: #000000, $alpha: 0.56); /* Définit la couleur de fond des lignes */
+    content: ""; /* Ajoute du contenu vide aux éléments */
+    display: block; /* Affiche les éléments en tant que blocs */
+    left: 50%; /* Définit la position horizontale des lignes */
+    position: absolute; /* Définit la position absolue des lignes */
+    top: 50%; /* Définit la position verticale des lignes */
+    transform: translateX(-50%) translateY(-50%) rotate(45deg); /* Applique une transformation de rotation et de translation aux lignes */
+    transform-origin: center center; /* Définit l'origine de la transformation des lignes */
+  }
+  &::before {
+    width: 50%; /* Définit la largeur de la ligne horizontale */
+    height: 2px; /* Définit la hauteur de la ligne horizontale */
+  }
+  &::after {
+    width: 2px; /* Définit la largeur de la ligne verticale */
+    height: 50%; /* Définit la hauteur de la ligne verticale */
+  }
+}

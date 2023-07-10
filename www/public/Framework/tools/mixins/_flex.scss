@@ -1,0 +1,18 @@
+// Cette mixin permet de générer des classes d'alignement
+// en fonction d'un nom, d'une propriété CSS et d'une liste d'options d'alignement.
+
+// Déclaration de la mixin avec trois paramètres :
+// - $name : le nom de la classe générée
+// - $prop : la propriété CSS à appliquer
+// - $arr : une liste des options d'alignement
+
+@mixin just-align($name, $prop, $arr) {
+  // Boucle @each : itère à travers chaque paire clé-valeur de la liste $arr
+  @each $mod, $dir in $arr {
+    // Pour chaque paire, génère une classe avec le nom spécifié ($name) suivi du modificateur ($mod)
+    .#{$name}-#{$mod} {
+      // Applique la propriété CSS spécifiée ($prop) avec la valeur correspondante ($dir)
+      #{$prop}: #{$dir};
+    }
+  }
+}

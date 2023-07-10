@@ -1,0 +1,19 @@
+// Cette mixin génère des classes pour les propriétés z-index.
+
+// Déclaration de la mixin sans paramètre, cela signifie qu'elle utilise une variable existante nommée $lop-size.
+
+@mixin create-z-index() {
+  // La boucle @for va itérer de 1 à $lop-size.
+
+  @for $i from 1 through $lop-size {
+    // Pour chaque itération, on multiplie $i par 5 pour obtenir la valeur du z-index.
+
+    $prefix: $i * 5;
+
+    // On génère une classe avec le préfixe "z-" suivi de la valeur du z-index.
+
+    .z-#{$prefix} {
+      z-index: $prefix;
+    }
+  }
+}

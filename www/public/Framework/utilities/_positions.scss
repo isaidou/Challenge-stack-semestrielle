@@ -1,0 +1,18 @@
+// Génération des classes pour les positions CSS
+@each $position in $positions {
+  // Classe pour la position spécifique
+  .#{$position} {
+    position: #{$position};
+  }
+}
+
+// Boucle pour générer les classes de positionnement fixe avec différentes valeurs
+@for $i from 0 through $lop-size {
+  // Boucle pour générer les classes pour chaque position fixe
+  @each $position in $fixed-positions {
+    // Classe avec la combinaison de position et de valeur spécifique
+    .#{$position}-#{$i} {
+      #{$position}: $i * 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+// Cette mixin génère des classes de colonnes en utilisant une boucle @for.
+// Elle crée des classes avec des noms spécifiques pour chaque colonne,
+// en augmentant progressivement la taille de la colonne en utilisant la valeur `8.33% * $i`.
+@mixin create-columns($prefix) {
+  @for $i from 1 through $grid-columns {
+    .col-w-#{$prefix}-#{$i} {
+      flex: 8.33% * $i;
+      max-width: 8.33% * $i;
+    }
+  }
+}
+
+// Cette mixin génère des classes de largeur fractionnée en fonction d'un préfixe spécifique au point de rupture et d'une base donnée.
+// Elle utilise une boucle @for pour calculer la largeur en pourcentage de chaque fraction.
+@mixin create-width-fractions-for-breakpoint($breakpoint-prefix, $base) {
+  @for $i from 1 through $base {
+    $width: $i * 100% / $base;
+    $fraction: #{$i}\/#{$base};
+    .w-#{$breakpoint-prefix}-#{$fraction} {
+      width: $width;
+      max-width: $width;
+    }
+  }
+}
+
+// Cette mixin permet de définir une hauteur spécifique pour les éléments lorsque la largeur d'affichage dépasse un certain point de rupture.
+// Elle utilise une directive @media pour appliquer les styles uniquement dans cette condition.
+@mixin create-height-fraction-for-breakpoint($breakpoint, $prefix, $width) {
+  @media (min-width: $breakpoint) {
+    .#{$prefix} {
+      width: $width;
+      max-width: $width;
+    }
+  }
+}
+
+// Cette mixin génère des classes pour la largeur et la hauteur fractionnées en utilisant une boucle @for.
+// Elle calcule la largeur en pourcentage de chaque fraction en fonction de la base spécifiée.
+@mixin create-fraction-width($base) {
+  @for $i from 1 through $base {
+    $width: $i * 100% / $base;
+    $fraction: #{$i}\/#{$base};
+
+    .w-#{$fraction} {
+      width: $width;
+      max-width: $width;
+    }
+    .h-#{$fraction} {
+      height: $width;
+      max-height: $width;
+    }
+  }
+}
+
+// Ce placeholder définit les styles de mise en page pour un conteneur utilisant la flexbox avec l'enroulement des éléments et l'alignement vertical au centre.
+%is-wrap-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}

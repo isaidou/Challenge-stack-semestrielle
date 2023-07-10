@@ -1,0 +1,62 @@
+// Boucle @for pour générer des sélecteurs pour les balises h1 à h6.
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin-top: 0;  // Supprime la marge supérieure par défaut des balises h1 à h6.
+  }
+}
+
+// Boucle @for pour générer des classes pour les balises h1 à h6 en utilisant l'extension.
+@for $i from 1 through 6 {
+  .h#{$i} {
+    @extend h#{$i};  // Étend les styles de la balise correspondante (h1, h2, etc.) à la classe .h1, .h2, etc.
+  }
+}
+
+.italic {
+  font-style: italic;  // Définit le style de police italique.
+}
+
+.bold {
+  font-weight: bold;  // Définit le style de police en gras.
+}
+
+// Placeholder %is-h pour les styles communs des balises de titre.
+%is-h {
+  line-height: 1.2;  // Définit la hauteur de ligne pour les balises de titre.
+}
+
+// Boucle @each pour générer des styles de taille de police pour les balises de titre.
+@each $text-font-target, $text-font-size in $heading-font-sizes {
+  #{$text-font-target} {
+    font-size: $text-font-size;  // Définit la taille de police pour la balise de titre cible.
+    @extend %is-h;  // Étend les styles communs des balises de titre définis par %is-h.
+  }
+  .#{$text-font-target} {
+    font-size: $text-font-size;  // Définit la taille de police pour la classe de balise de titre cible.
+    @extend %is-h;  // Étend les styles communs des balises de titre définis par %is-h.
+  }
+}
+
+// Boucle @each pour générer des classes pour les tailles de police définies.
+@each $font-size-prefix, $font-size in $text-font-sizes {
+  @include create-font-size($font-size, $font-size-prefix);  // Utilise un mixin pour générer les classes de taille de police avec le préfixe correspondant.
+}
+
+// Boucle @each pour générer des classes pour les tailles de police personnalisées.
+@each $font-size-name, $font-size in $font-sizes {
+  .#{$font-size-name} {
+    font-size: $font-size;  // Définit la taille de police pour la classe correspondante.
+  }
+}
+
+// Boucle @each pour générer des classes pour les différents poids de police.
+@each $font-weight-prefix, $font-weight in $font-weights {
+  .font-#{$font-weight-prefix} {
+    font-weight: $font-weight;  // Définit le poids de police pour la classe correspondante.
+  }
+}
+
+i,
+span.material-icons {
+  vertical-align: middle;  // Définit l'alignement vertical des icônes de police.
+}

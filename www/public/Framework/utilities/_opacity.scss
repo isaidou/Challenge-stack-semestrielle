@@ -1,0 +1,13 @@
+// Boucle pour générer les classes d'opacité
+@for $i from 0 through $opacity-range {
+  // Calcul du pourcentage d'opacité correspondant à chaque itération
+  $percentage: 1 / $opacity-range;
+  // Calcul du préfixe en pourcentage pour le nom de classe
+  $prefix: $percentage * 100;
+
+  // Génération des classes d'opacité
+  .opacity-#{5*$i} {
+    // Appel de la fonction create-opacity() avec la valeur d'opacité correspondante
+    @include create-opacity(0.05 * $i);
+  }
+}

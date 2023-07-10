@@ -1,0 +1,36 @@
+.notification {
+  // Positionnement
+  position: relative;
+  
+  // Dimensions et espacement
+  padding: $notification-padding;
+  width: $notification-width;
+  margin-bottom: 1rem;
+  
+  // Ombre et bordure
+  box-shadow: $notification-shadow;
+  border: $notification-boder;
+  border-radius: $notification-boder-radius;
+  
+  // Style du titre
+  &-title {
+    @extend %is-flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $notification-title-font-size;
+    font-weight: $notification-title-font-weight;
+    margin-bottom: 1rem;
+  }
+  
+  // Bouton de fermeture
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  // Conteneur de notification (position fixe)
+  &-container {
+    position: fixed;
+  }
+}

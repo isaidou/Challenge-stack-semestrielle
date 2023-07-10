@@ -1,0 +1,40 @@
+// Mixin pour créer une barre de navigation personnalisée basée sur un thème spécifique
+@mixin create-navbar-for-theme($name, $color) {
+  // Classe .navbar- suivie du nom du thème
+  .navbar-#{$name} {
+    background-color: $color; // Couleur de fond de la barre de navigation
+    border-bottom: $nav-bar-border-width solid set-border-color($color); // Bordure inférieure de la barre de navigation
+    .brand {
+      color: inherit; // Couleur du texte pour l'élément .brand (logo, nom de la marque)
+    }
+    .brand {
+      color: set-color($color); // Couleur du texte pour l'élément .brand en utilisant une fonction personnalisée
+    }
+    .nav {
+      &-link {
+        color: set-color($color); // Couleur du texte pour les liens de navigation
+      }
+    }
+  }
+}
+
+// Mixin pour créer une barre de navigation réduite spécifique à un point de rupture
+@mixin create-navbar-collapse-for-breakpoint($suffix) {
+  // Classe .navbar-collapse- suivie du suffixe spécifié
+  .navbar-collapse-#{$suffix} {
+    flex-wrap: nowrap; // Empêche l'enroulement des éléments de la barre de navigation lorsqu'ils sont réduits
+    .nav {
+      display: flex; // Affiche les éléments de navigation en tant que conteneur flex
+      width: 100%; // Définit la largeur à 100% pour occuper tout l'espace disponible
+      &-toggler {
+        display: none; // Masque par défaut le bouton de bascule de la barre de navigation réduite
+      }
+      &-menu {
+        width: auto; // Largeur automatique pour les éléments de menu
+        height: 100%; // Hauteur à 100% pour occuper tout l'espace vertical disponible
+        overflow-y: visible; // Affiche le débordement vertical des éléments de menu si nécessaire
+        display: flex; // Affiche les éléments de menu en tant que conteneur flex
+      }
+    }
+  }
+}

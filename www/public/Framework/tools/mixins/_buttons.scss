@@ -1,0 +1,77 @@
+/// Crée une classe de bouton (.bg-*) basée sur un nom de thème et une couleur de thème
+/// @param {String} $name - Nom du thème/couleur
+/// @param {String} $theme-color - Couleur utilisée dans le thème
+@mixin create-button-for-theme($name, $theme-color) {
+  $hover-color: darken($theme-color, 12%);
+  $flat-hover-color: rgba($theme-color, 0.5);
+
+  // Classe principale du bouton
+  .btn-#{$name} {
+    color: set-color($theme-color);
+    background-color: $theme-color;
+    border-color: transparent;
+
+    // Effet au survol
+    &:hover {
+      background-color: darken($theme-color, 10%);
+    }
+
+    // Variante de bouton plat
+    &-flat {
+      border-color: transparent;
+      color: $theme-color;
+
+      // Effet au survol
+      &:hover {
+        background-color: rgba($theme-color, 0.12);
+      }
+    }
+
+    // Variante de bouton avec bordure
+    &-outline {
+      color: $theme-color;
+      border-color: $theme-color;
+
+      // Effet au survol
+      &:hover {
+        color: set-color($theme-color);
+        background-color: $theme-color;
+      }
+    }
+  }
+}
+
+/// Crée une classe de bouton (.bg-*) basée sur un nom et une couleur spécifique
+/// @param {String} $name - Nom du thème/couleur
+/// @param {String} $color - Couleur utilisée dans le thème
+@mixin create-button-for-color($name, $color) {
+  // Classe principale du bouton avec la couleur spécifique
+  .btn-#{$name} {
+    background: $color;
+    color: set-color($color);
+  }
+
+  // Variante de bouton avec bordure et couleur spécifique
+  .btn-#{$name}-outline {
+    color: $color;
+    border-color: $color;
+
+    // Effet au survol
+    &:hover {
+      background-color: $color;
+      color: set-color($color);
+    }
+  }
+
+  // Variante de bouton plat avec couleur spécifique
+  .btn-#{$name}-flat {
+    color: $color;
+    border-color: transparent;
+
+    // Effet au survol
+    &:hover {
+      background-color: rgba($color, 0.5);
+      color: $color;
+    }
+  }
+}

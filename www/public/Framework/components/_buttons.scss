@@ -1,0 +1,100 @@
+/**
+ * Définition d'un sélecteur de placeholder `%button` avec des styles de base pour les boutons.
+ */
+ %button {
+  padding: $button-padding;
+  border-radius: $button-radius;
+  display: inline-block;
+}
+
+/**
+ * Sélecteur de classe `.btn` qui étend le sélecteur de placeholder `%button`.
+ * Il applique des styles spécifiques aux boutons, tels que la couleur de fond, la couleur du texte,
+ * les bordures, le centrage du texte, etc.
+ * Il inclut également des styles supplémentaires pour les interactions, telles que l'hover, le focus, etc.
+ */
+.btn {
+  @extend %button;
+  background: $button-bg-color;
+  color: set-color($button-bg-color);
+  border: create-border($button-border-color);
+  text-align: center;
+
+  &:hover {
+    background-color: darken($button-bg-color, 10%);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:focus {
+    outline: $button-focus-outline;
+  }
+
+  &.flat {
+    border: none;
+  }
+
+  &-outline {
+    border: 1px solid $default-border-color;
+  }
+}
+
+/**
+ * Ajout d'une marge droite de 1rem aux boutons avec la classe `.btn`.
+ */
+.btn {
+  margin-right: 1rem;
+}
+
+/**
+ * Sélecteur de classe `.btn-group` pour regrouper des boutons ensemble.
+ * Il applique des styles pour afficher les boutons en ligne et les aligner verticalement.
+ * Il inclut également des styles spécifiques pour les boutons individuels à l'intérieur du groupe.
+ */
+.btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+
+  .btn {
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-right: 0;
+      border-right: 0;
+    }
+
+    &:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+}
+
+/**
+ * Sélecteur de classe `.btn-icon` pour les boutons avec des icônes.
+ * Il définit le rembourrage (padding) des boutons avec des icônes.
+ */
+.btn-icon {
+  padding: 0.5rem;
+}
+
+/**
+ * Boucle `@for` pour générer différentes tailles de boutons en fonction de l'itération.
+ * Chaque taille de bouton a une classe spécifique avec une taille de police et un rembourrage (padding) correspondants.
+ */
+@for $i from 1 through 6 {
+  .btn-size-#{$i} {
+    font-size: 0.5rem + ($i * 0.25rem);
+    padding: 0.5em 1em;
+  }
+}
+
+/**
+ * Sélecteur d'ancrage `a.btn` pour les boutons qui sont des liens.
+ * Il supprime la décoration de texte pour les liens boutons.
+ */
+a.btn {
+  text-decoration: none;
+}

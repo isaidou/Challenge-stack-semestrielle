@@ -1,0 +1,65 @@
+// Crée des classes de marge spécifiques à un point de rupture donné
+// @param {Number} $margin-size : taille de la marge
+// @param {String} $breakpoint : point de rupture
+// @param {String} $prefix : préfixe de classe spécifique au point de rupture
+@mixin create-margin-for-breakpoint($margin-size, $breakpoint, $prefix) {
+  // Classe de marge générale pour tous les côtés
+  .m-#{$prefix}-#{$margin-size},
+  .mx-#{$prefix}-#{$margin-size},
+  .mr-#{$prefix}-#{$margin-size} {
+    margin-right: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour les côtés gauche et droite
+  .m-#{$prefix}-#{$margin-size},
+  .mx-#{$prefix}-#{$margin-size},
+  .ml-#{$prefix}-#{$margin-size} {
+    margin-left: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour les côtés haut et bas
+  .m-#{$prefix}-#{$margin-size},
+  .my-#{$prefix}-#{$margin-size},
+  .mt-#{$prefix}-#{$margin-size} {
+    margin-top: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour le côté bas
+  .m-#{$prefix}-#{$margin-size},
+  .my-#{$prefix}-#{$margin-size},
+  .mb-#{$prefix}-#{$margin-size} {
+    margin-bottom: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+}
+
+// Crée des classes de marge générales
+// @param {Number} $margin-size : taille de la marge
+@mixin create-margin($margin-size) {
+  // Classe de marge générale pour tous les côtés
+  .m-#{$margin-size},
+  .mx-#{$margin-size},
+  .mr-#{$margin-size} {
+    margin-right: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour les côtés gauche et droite
+  .m-#{$margin-size},
+  .mx-#{$margin-size},
+  .ml-#{$margin-size} {
+    margin-left: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour les côtés haut et bas
+  .m-#{$margin-size},
+  .my-#{$margin-size},
+  .mt-#{$margin-size} {
+    margin-top: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+  
+  // Classe de marge pour le côté bas
+  .m-#{$margin-size},
+  .my-#{$margin-size},
+  .mb-#{$margin-size} {
+    margin-bottom: 0.25rem * $margin-size; // Calcul de la valeur de la marge
+  }
+}

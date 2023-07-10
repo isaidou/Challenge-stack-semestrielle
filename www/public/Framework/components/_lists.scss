@@ -1,0 +1,54 @@
+/**
+ * Sélecteur de classe `.list` pour les listes.
+ * Il définit les styles de base pour la liste, les éléments de liste et les variantes.
+ */
+ .list {
+  /** Héritage des styles de marge intérieure nulle (0) */
+  @extend .padding-inline-0;
+  list-style-type: none;
+  border-radius: $list-border-radius;
+  margin-bottom: $list-margin-bottom;
+  padding: 0;
+
+  /** Style de bordure pour les listes non séparées */
+  &:not(.list-separated) {
+    border: $list-border;
+  }
+
+  /** Styles spécifiques pour les éléments de liste avec bordure */
+  &-border {
+    .item {
+      &:not(:last-child) {
+        border-bottom: $list-border;
+      }
+    }
+  }
+
+  /** Styles spécifiques pour les listes imbriquées (éléments <ul>) */
+  ul {
+    margin-bottom: 0;
+  }
+
+  /** Styles spécifiques pour les listes avec survol */
+  &.hoverable {
+    .item:hover {
+      background-color: $list-item-hover-color;
+    }
+  }
+
+  /** Styles spécifiques pour les listes séparées */
+  &-separated {
+    border: none;
+    .item {
+      padding: $list-item-separated-padding;
+      margin-bottom: 0.5rem;
+      border: $list-item-separated-border;
+      border-radius: $list-item-serparates-radius;
+    }
+  }
+}
+
+/** Styles spécifiques pour les éléments d'une liste */
+.item {
+  padding: $list-item-padding;
+}

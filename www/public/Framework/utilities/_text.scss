@@ -1,0 +1,49 @@
+// Définition d'une liste des alignements possibles
+$alignments: (left, center, right, justify);
+
+// Boucle pour créer les classes de texte correspondant aux alignements
+@each $alignment in $alignments {
+  .text-#{$alignment} {
+    text-align: $alignment;
+  }
+}
+
+// Mixin pour créer des classes de texte correspondant à une couleur spécifique
+@mixin create-text-for-color($name, $color) {
+  .text-#{$name} {
+    color: $color;
+  }
+}
+
+// Classe pour la troncation du texte
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Classe pour la troncation du texte avec des points de suspension
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+// Classe pour la troncation du texte sans points de suspension
+.overflow-clip {
+  text-overflow: clip;
+}
+
+// Classe pour le texte sans rupture de ligne
+.text-break {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+// Classe pour le texte avec rupture de ligne au niveau des mots
+.text-break-words {
+  overflow-wrap: break-word;
+}
+
+// Classe pour le texte avec rupture de ligne à tous les caractères
+.text-break-all {
+  overflow-wrap: break-all;
+}

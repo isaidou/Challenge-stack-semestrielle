@@ -1,0 +1,91 @@
+// Définition d'une classe générique pour les bordures
+.b {
+  border: $default-border; // Définit la bordure avec la valeur de $default-border
+}
+
+.b-0 {
+  border: none; // Supprime la bordure en définissant "none"
+}
+
+.bx-0 {
+  border-left-width: 0; // Définit la largeur de la bordure gauche à 0
+  border-right-width: 0; // Définit la largeur de la bordure droite à 0
+}
+
+.by-0 {
+  border-top-width: 0; // Définit la largeur de la bordure supérieure à 0
+  border-bottom-width: 0; // Définit la largeur de la bordure inférieure à 0
+}
+
+// Définition des classes de bordure spécifiques pour chaque emplacement
+@each $name, $location in $locations {
+  .b#{$name} {
+    border-#{$location}: $default-border; // Définit la bordure avec la valeur de $default-border pour chaque emplacement
+  }
+
+  .b#{$name}-0 {
+    border-#{$location}-width: 0; // Définit la largeur de la bordure à 0 pour chaque emplacement
+  }
+}
+
+.bx {
+  //border-left:  $default-border;
+  //border-right:  $default-border;
+  @extend .br; // Étend les styles de la classe .br (bordure droite)
+  @extend .bl; // Étend les styles de la classe .bl (bordure gauche)
+}
+
+.by {
+  @extend .bt; // Étend les styles de la classe .bt (bordure supérieure)
+  @extend .bb; // Étend les styles de la classe .bb (bordure inférieure)
+}
+
+// Border radius (bordure arrondie)
+
+.r-full {
+  border-radius: 50%; // Définit le rayon de bordure à 50% (bordure entièrement arrondie)
+}
+
+.r-0 {
+  border-radius: 0; // Définit le rayon de bordure à 0 (bordure sans arrondi)
+}
+
+.r {
+  border-radius: 0.25rem; // Définit le rayon de bordure à 0.25rem (bordure légèrement arrondie)
+}
+
+// Boucle pour générer des classes de bordure arrondie avec différents rayons
+@for $i from 2 through 12 {
+  .r-#{$i} {
+    border-radius: 0.25rem * $i; // Définit le rayon de bordure en fonction de $i et de la valeur calculée
+  }
+
+  @each $corner, $corner-name in $corners {
+    .r#{$corner} {
+      border-#{$corner-name}-left-radius: $default-border-radius; // Définit le rayon de bordure gauche en fonction de $default-border-radius
+      border-#{$corner-name}-right-radius: $default-border-radius; // Définit le rayon de bordure droite en fonction de $default-border-radius
+    }
+
+    .r#{$corner}-#{$i} {
+      border-#{$corner-name}-left-radius: 0.25rem * $i; // Définit le rayon de bordure gauche en fonction de $i et de la valeur calculée
+      border-#{$corner-name}-right-radius: 0.25rem * $i; // Définit le rayon de bordure droite en fonction de $i et de la valeur calculée
+    }
+
+    @each $side, $side-name in $sides {
+      .r#{$corner}-#{$side} {
+        border-#{$corner-name}-#{$side-name}-radius: $default-border-radius; // Définit le rayon de bordure pour chaque coin et côté en fonction de $default-border-radius
+      }
+
+      .r#{$corner}-#{$side}-#{$i} {
+        border-#{$corner-name}-#{$side-name}-radius: 0.25rem * $i; // Définit le rayon de bordure pour chaque coin et côté en fonction de $i et de la valeur calculée
+      }
+    }
+  }
+}
+
+// Boucle pour générer des classes de largeur de bordure
+@for $i from 1 through 5 {
+  .b-w-#{$i}, .hover\:b-w-#{$i}:hover {
+    border-width: $i * 1px; // Définit la largeur de la bordure en fonction de $i et d'une valeur fixe (1px)
+  }
+}

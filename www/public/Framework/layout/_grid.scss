@@ -1,0 +1,60 @@
+/*** Containers ***/
+.container {
+  margin: 0 auto; /* Centre le conteneur horizontalement */
+}
+
+.container-xxl {
+  max-width: 1440px; /* Définit une largeur maximale pour le conteneur extra-extra-large */
+}
+
+.container-lg {
+  max-width: 1280px; /* Définit une largeur maximale pour le conteneur large */
+}
+
+.container-md {
+  max-width: 1024px; /* Définit une largeur maximale pour le conteneur moyen */
+}
+
+/** Rows and Columns **/
+.row,
+.col {
+  @extend %is-flex; /* Utilise la classe .is-flex pour appliquer les propriétés flexbox */
+  width: 100%; /* Définit une largeur de 100% pour les lignes et colonnes */
+}
+
+.row {
+  flex-direction: row; /* Définit la direction des éléments de la ligne comme horizontale */
+  flex-wrap: wrap; /* Permet aux éléments de la ligne de passer à la ligne suivante si nécessaire */
+  justify-content: start; /* Aligne les éléments de la ligne au début */
+  align-items: top; /* Aligne les éléments de la ligne en haut */
+}
+
+.col {
+  @extend %is-flex; /* Utilise la classe .is-flex pour appliquer les propriétés flexbox */
+  flex-direction: column; /* Définit la direction des éléments de la colonne comme verticale */
+  flex: 1 0 0%; /* Utilise le modèle de flexibilité pour occuper tout l'espace vertical disponible */
+}
+
+/** Columns width **/
+
+@for $i from 1 through $grid-columns {
+  $percentage: 100% / $grid-columns; /* Calcule le pourcentage de largeur pour chaque colonne */
+  .col-w-#{$i} {
+    flex: 0 0 auto; /* Désactive la flexibilité pour empêcher les colonnes de se rétrécir */
+    max-width: $percentage * $i; /* Définit la largeur maximale de la colonne */
+  }
+  .w-#{$i} {
+    width: $percentage * $i; /* Définit la largeur de la colonne */
+    max-width: $percentage * $i; /* Définit la largeur maximale de la colonne */
+  }
+  .col-c-#{$i}{
+    column-count: $i; /* Définit le nombre de colonnes à utiliser dans les mises en colonnes */
+  }
+}
+
+@include create-fraction-width(2); /* Crée des classes pour les fractions de largeur 1/2 */
+@include create-fraction-width(3); /* Crée des classes pour les fractions de largeur 1/3 */
+@include create-fraction-width(5); /* Crée des classes pour les fractions de largeur 1/5 */
+@include create-fraction-width(4); /* Crée des classes pour les fractions de largeur 1/4 */
+@include create-fraction-width(6); /* Crée des classes pour les fractions de largeur 1/6 */
+@include create-fraction-width(12); /* Crée des classes pour les fractions de largeur 1/12 */

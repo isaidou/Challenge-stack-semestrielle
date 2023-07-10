@@ -1,0 +1,95 @@
+/* Fichier Reset */
+
+/* Box-sizing pour tous les éléments et leurs pseudo-éléments */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* Réinitialisation des marges et des paddings pour certains éléments */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles de base pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: $heading-font-weigth;
+  margin-bottom: 1rem;
+}
+
+/* Styles de base pour le corps de la page */
+body {
+  background-color: $body-background-color;
+  color: $font-color;
+  font-family: $font-family-base;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+/* Styles de base pour les boutons */
+button {
+  font-family: $font-family-base;
+  font-size: $font-size;
+}
+
+/* Styles de base pour les paragraphes */
+p {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Styles de base pour les liens */
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Styles de base pour les tableaux */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Réinitialisation des citations */
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Styles de base pour les blocs de code */
+code {
+  font-family: $font-family-mono;
+}
+
+/* Styles de base pour les placeholders des champs de formulaire */
+*::placeholder {
+  font-family: $font-family-base;
+}
+
+/* Styles de base pour les listes non ordonnées */
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 1.5rem;
+  li {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Styles de base pour les boutons lorsqu'ils sont en focus */
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Styles de base pour les champs de formulaire */
+input {
+  font-family: $font-family-base;
+}

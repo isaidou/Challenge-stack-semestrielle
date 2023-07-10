@@ -1,0 +1,33 @@
+// Cette mixin génère un style de bordure de tableau pour un thème spécifique.
+
+// Déclaration de la mixin avec deux paramètres :
+// - $theme-name : le nom du thème
+// - $color : la couleur à utiliser pour la bordure du tableau
+
+@mixin create-table-border-for-theme($theme-name, $color) {
+  // Inverse la couleur pour créer une version contrastante pour la bordure
+  $inverted-color: invert($color, 100%);
+
+  // Sélectionne les éléments de tableau (.table) et les éléments de tableau avec bordure (.table-with-border)
+  .table,
+  .table-with-border {
+    // Applique la classe de fond correspondant au thème
+    &.bg-#{$theme-name} {
+      // Sélectionne les cellules de tableau (td) et les en-têtes de tableau (th)
+      td,
+      th {
+        // Définit la couleur de la bordure en utilisant une version légèrement transparente de la couleur inversée
+        border-color: rgba($inverted-color, 0.12);
+      }
+    }
+    // Applique la classe de bordure correspondant au thème
+    &.b-#{$theme-name} {
+      // Sélectionne les cellules de tableau (td) et les en-têtes de tableau (th)
+      td,
+      th {
+        // Définit la couleur de la bordure en utilisant la couleur spécifiée
+        border-color: $color;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+.flex-wrap {
+  flex-wrap: wrap;  // Définit l'arrangement des éléments flexibles sur plusieurs lignes lorsque l'espace horizontal est insuffisant.
+}
+
+.flex-no-wrap {
+  flex-wrap: nowrap;  // Définit l'arrangement des éléments flexibles sur une seule ligne, même si l'espace horizontal est insuffisant.
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;  // Définit l'arrangement des éléments flexibles sur plusieurs lignes, en inversant leur ordre.
+}
+
+.flex-wrap-inherit {
+  flex-wrap: inherit;  // Hérite la valeur de la propriété flex-wrap du parent.
+}
+
+.flex-1 {
+  flex: 1 1 0%;  // Définit les propriétés flex pour l'expansion, la réduction et la taille minimale des éléments flexibles.
+}
+
+.flex-auto {
+  flex: 1 1 auto;  // Définit les propriétés flex pour l'expansion, la réduction et la taille automatique des éléments flexibles.
+}
+
+.flex-initial {
+  flex: 0 1 auto;  // Définit les propriétés flex pour l'expansion désactivée, la réduction activée et la taille automatique des éléments flexibles.
+}
+
+.flex-none {
+  flex: none;  // Désactive l'expansion et la réduction des éléments flexibles.
+}
+
+// Boucle @each pour générer des classes pour les différentes directions de flexbox.
+@each $direction-name, $direction in $flex-directions {
+  .flex-direction-#{$direction-name} {
+    flex-direction: $direction;  // Définit la direction de l'arrangement des éléments flexibles (row, row-reverse, column, column-reverse).
+  }
+}
+
+.flex-g-0 {
+  flex-grow: 0;  // Désactive l'extension des éléments flexibles pour utiliser l'espace disponible.
+}
+
+.flex-g {
+  flex-grow: 1;  // Active l'extension des éléments flexibles pour utiliser l'espace disponible.
+}
+
+.flex-s {
+  flex-shrink: 1;  // Active la réduction des éléments flexibles si l'espace est insuffisant.
+}
+
+.flex-s-0 {
+  flex-shrink: 0;  // Désactive la réduction des éléments flexibles.
+}
+
+// Mixin pour générer des classes pour les alignements des éléments flexibles.
+@include just-align("align", "align-items", $align-positions);
+@include just-align("justify", "justify-content", $justify-positions);
+
+// Boucle @for pour générer des classes pour les écarts de taille.
+@for $i from 0 through $lop-size {
+  .gap-#{$i} {
+    gap: 0.25rem * $i;  // Définit l'espace entre les éléments flexibles.
+  }
+}

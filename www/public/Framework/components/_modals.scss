@@ -1,0 +1,108 @@
+/**
+ * Définition de la variable `$max-width` en récupérant la valeur correspondante dans la map `$modal-sizes`.
+ */
+ $max-width: map-get($modal-sizes, "default");
+
+ /**
+  * Mixin pour le padding de bordure commun des modales.
+  */
+ %modal-border-padding {
+   padding: $modal-padding;
+   border-bottom: $modal-border;
+ }
+ 
+ /**
+  * Classe `.modal` pour les modales.
+  */
+ .modal {
+   /** Styles généraux pour la modale */
+   display: none;
+   position: fixed;
+   top: 0;
+   right: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: $modal-background-background-color;
+ 
+   /** Conteneur de la modale */
+   &-container {
+     justify-content: center;
+     display: flex;
+     align-items: center;
+     width: 100%;
+     height: 100%;
+   }
+ 
+   /** Contenu de la modale */
+   &-content {
+     width: 100%;
+     max-width: $max-width;
+     max-height: $modal-content-max-height;
+     border-radius: $modal-content-boder-radius;
+     background-color: $modal-content-background-color;
+   }
+ 
+   /** Styles pour l'animation de la modale */
+   &-animated {
+     transition: all 0.3s ease-in-out;
+     .modal-content {
+       transition: all 0.3s ease-in-out;
+     }
+ 
+     /** Modale non affichée */
+     &:not(.show) {
+       opacity: 0;
+       .modal-content {
+         transform: scale(0);
+       }
+     }
+ 
+     /** Modale affichée */
+     &.show {
+       opacity: 1;
+       .modal-content {
+         transform: scale(1);
+       }
+     }
+   }
+ 
+   /** En-tête de la modale */
+   &-header {
+     @extend %modal-border-padding;
+   }
+ 
+   /** Corps de la modale */
+   &-body {
+     @extend %modal-border-padding;
+     overflow-y: auto;
+   }
+ 
+   /** Pied de la modale */
+   &-footer {
+     @extend %modal-border-padding;
+     border-bottom-width: 0;
+   }
+ 
+   /** Titre de la modale */
+   &-title {
+     font-size: $modal-title-font-size;
+     font-weight: $modal-title-font-weight;
+   }
+ 
+   /** Style pour les paragraphes */
+   p {
+     margin-bottom: 0;
+   }
+ 
+   /** Taille personnalisée pour le contenu de la modale */
+   @each $modal-size-prefix, $modal-size in $modal-sizes {
+     &.modal-#{$modal-size-prefix} {
+       .modal {
+         &-content {
+           max-width: $modal-size;
+         }
+       }
+     }
+   }
+ }
+ 

@@ -1,0 +1,20 @@
+// Boucle pour générer les classes d'overflow
+@each $overflow-value in $overflow-values {
+  // Génération de la classe pour l'overflow
+  .overflow-#{$overflow-value} {
+    // Définition de la propriété overflow avec la valeur correspondante
+    overflow: $overflow-value;
+  }
+
+  // Génération de la classe pour l'overflow-y
+  .overflow-y-#{$overflow-value} {
+    // Définition de la propriété overflow-y avec la valeur correspondante
+    overflow-y: $overflow-value;
+  }
+
+  // Génération de la classe pour l'overflow-x
+  .overflow-x-#{$overflow-value} {
+    // Définition de la propriété overflow-x avec la valeur correspondante
+    overflow-x: $overflow-value;
+  }
+}

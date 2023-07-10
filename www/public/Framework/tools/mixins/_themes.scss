@@ -1,0 +1,42 @@
+/// Cette mixin génère une classe de fond (.bg-*) en fonction d'un nom et d'une couleur.
+/// @param {String} $name : nom du thème/couleur
+/// @param {String} $color : couleur utilisée dans le thème
+/// @param {Number} $is-hover [0] : 1 créera une classe de survol (hover)
+
+@mixin create-background-for-theme($name, $color, $is-hover: 0) {
+  // Sélectionne les éléments avec la classe de fond correspondant au nom du thème
+  .bg-#{$name},
+  // Sélectionne les éléments avec la classe de survol correspondant au nom du thème lorsqu'ils sont en état de survol
+  .hover\:bg-#{$name}:hover {
+    // Inclut une autre mixin pour obtenir les styles de fond et de couleur
+    @include get-background-and-color($color);
+  }
+}
+
+/// Cette mixin génère une classe de texte (.text-*) en fonction d'un nom et d'une couleur.
+/// @param {String} $name : nom du thème/couleur
+/// @param {String} $color : couleur utilisée dans le thème
+/// @param {Number} $is-hover [0] : 1 créera une classe de survol (hover)
+
+@mixin create-text-for-theme($name, $color, $is-hover: 0) {
+  // Sélectionne les éléments avec la classe de texte correspondant au nom du thème
+  .text-#{$name},
+  // Sélectionne les éléments avec la classe de survol correspondant au nom du thème lorsqu'ils sont en état de survol
+  .hover\:text-#{$name}:hover {
+    // Définit la couleur du texte avec la couleur spécifiée (en important !important pour prioriser ce style)
+    color: $color!important;
+  } 
+}
+
+/// Cette mixin génère un ensemble de styles pour un thème complet.
+/// @param {String} $name : nom du thème
+/// @param {String} $color : couleur utilisée dans le thème
+
+@mixin create-theme($name, $color) {
+  // Utilise les mixins précédentes pour générer les différentes classes de style pour le thème
+  @include create-background-for-theme($name, $color);
+  @include create-text-for-theme($name, $color);
+  @include create-border-for-theme($name, $color);
+  @include create-button-for-theme($name, $color);
+  @include create-navbar-for-theme($name, $color);
+}
