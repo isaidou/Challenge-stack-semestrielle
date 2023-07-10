@@ -10,30 +10,13 @@
     </div>
     <input type="hidden" class='token' id="comment-info" data-parent-id='0' data-method="add" data-edit-id="0">
     <div class="col-md-8 col-10">
-        <div class="comment-attr" style='display: none;'>
-            <div class="reply-info mb-3 btn-group" style='display: none;' id='reply-bar'>
-                <button disabled="disabled" class='btn btn-primary p-2 py-1'>
-                    <small class='reply-to'>Replying to</small>
-                </button>
-                <button class="btn btn-primary cancel-reply p-2 py-1">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="reply-info mb-3 btn-group" style='display: none;' id='edit-bar'>
-                <button disabled="disabled" class='btn btn-primary p-2 py-1'>
-                    <small class='edit-info'>Editing <span class="edit-type"></span></small>
-                </button>
-                <button class="btn btn-primary cancel-edit p-2 py-1">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
         <form action="<?= URLROOT ?>/article/add-comment" method="POST">
             <textarea name="content" id="comment-area" cols="10" rows="8" class="form-control"
                 <?= !empty($data['comment_err']) ? 'is-invalid' : '' ?>></textarea>
             <input type="hidden" name="article_id" value="<?= $data['article']->article_id ?>" />
+            <?= View::formToken() ?>
             <p class="invalid-feedback pt-1"><?= $data['comment_err'] ?></p>
-            <button class="btn btn-success float-end mt-4" id='comment-btn'>Ajouter le commentaire</button>
+            <button class="btn btn-success float-end mt-4" id='comment-btn'>Ajouter un commentaire</button>
         </form>
     </div>
     <div class="col-0 col md-3"></div>

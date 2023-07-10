@@ -1,7 +1,6 @@
 <?php View::header(true, $data['article']->title) ?>
 
 <link rel="stylesheet" href="/css/hljs-theme.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 <link rel="stylesheet" href="/css/article.css">
 
 <div class="container p-md-5 pb-md-0 mb-md-0">
@@ -60,28 +59,14 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 
     <h4>Comments</h4>
     <br>
 
+
     <?php require_once "comment-section.php"; ?>
-
 </div>
-
 <?= View::formToken($data['article']->article_id, "article_id") ?>
-
-<script>
-if (document.querySelectorAll(".content-area img")[0]) document.querySelectorAll(".content-area img")[0].style
-    .display =
-    "none";
-
-function resizeBar() {
-    document.querySelector(".fixed-action-bar").style.width = (document.querySelector(".content-area")
-        .getBoundingClientRect().width + 10) + "px";
-}
-resizeBar();
-window.onresize = resizeBar;
-</script>
-
-<script src="/js/article.js" type="module"></script>
 <?php View::footer() ?>

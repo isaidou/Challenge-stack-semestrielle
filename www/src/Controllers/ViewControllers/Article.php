@@ -67,7 +67,7 @@ class Article extends Controller
 	 */
 	public function addComment()
 	{
-		Server::checkPostReq(['article_id', 'content'], true, false);
+		Server::checkPostReq(['article_id', 'content'], true, true);
 		$articleId = $_POST['article_id'];
 		$content = Str::strip2lines($_POST['content']);
 
@@ -179,8 +179,8 @@ class Article extends Controller
 		$commentId = (int) $_GET['idComment'];
 		$articleId = $_GET['idArticle'];
 
-		if (!$this->commentModel->isUserComment($commentId)) {
-			Session::flash('delete_error', "Impossible de supprimer le commentaire car c'est pas le tien veuillez le signaler s'il est innaproprié !", 'alert alert-danger');
+		if (!$this->commentModel->isUserComment($commentId) || !Session::isAdmin()) {
+			Session::flash('delete_error', "Impossible de supprimer le commentaire car c'est pas le votre veuillez le signaler s'il est innaproprié !", 'alert alert-danger');
 		} else {
 			$deleteComment = $this->commentModel->deleteComment($commentId);
 			if ($deleteComment) {
