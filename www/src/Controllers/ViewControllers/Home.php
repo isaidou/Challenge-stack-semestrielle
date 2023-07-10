@@ -51,7 +51,6 @@ class Home extends ProtectedController
 			$articles[$key]->user_info = $this->userModel->getInfoById($article->user_id);
 		}
 
-
 		$data['articles'] = $articles ?? [];
 		$data['current_page'] = $page;
 		$data['total_pages'] = $totalPages;

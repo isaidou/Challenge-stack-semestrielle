@@ -53,6 +53,7 @@ class Article extends Controller
 		$data['tags'] = $this->articleModel->fetchTags($articleId);
 		$data['comments'] = $comments;
 
+
 		$this->view("article/index", $data);
 	}
 
@@ -69,7 +70,7 @@ class Article extends Controller
 	{
 		Server::checkPostReq(['article_id', 'content'], true, true);
 		$articleId = $_POST['article_id'];
-		$content = Str::strip2lines($_POST['content']);
+		$content = ht(Str::strip2lines($_POST['content']));
 
 		$data = [];
 		// check if content is valid
@@ -120,13 +121,15 @@ class Article extends Controller
 			$admins = $this->adminModel->getUserAdmin();
 			$linkTag = "<a href='" . URLROOT . "/article/?id=$articleId" . "#comment-$commentId'>Accéder au commentaire signaler</a>";
 			$body = "Ce commentaire vient d'etre signalé: $linkTag. <br>";
-
-			foreach ($admins as $admin) {
-				$mailStatus = $this->mailModel->sendMail($admin->email, 'Commentaire signalé', $body);
+			if (!Utils::isNull($admins)) {
+				foreach ($admins as $admin) {
+					$mailStatus = $this->mailModel->sendMail($admin->email, 'Commentaire signalé', $body);
+				}
+			} else {
+				$mailStatus = $this->mailModel->sendMail(SUPER_ADMIN_EMAIL, 'Commentaire signalé', $body);
 			}
 
 			if ($mailStatus) {
-
 				Session::flash('report_success', 'Signalement effectué avec succès');
 			} else {
 				Session::flash('report_error', 'Erreur lors du signalement', 'alert alert-danger');
@@ -137,33 +140,6 @@ class Article extends Controller
 		Server::redirect("article/?id=$articleId");
 	}
 
-	/**
-	 * Edit comment
-	 * Check for content errors
-
-	 * 
-	 * @param int $commentId
-	 * @route true
-	 * @postParams [content]
-	 */
-	public function editComment(int $commentId)
-	{
-		$content = Str::strip2lines($_POST['content']);
-		$data = [];
-
-		if (mb_strlen($content) > $this->maxCommentContent) {
-			$data['content_err'] = "Comments cannot be more than 1500 characters";
-		} else if (Str::isEmptyStr($content)) {
-			$data['content_err'] = "Comment cannot be empty";
-		} else if (!$this->commentModel->isUserComment($commentId)) {
-			$data['err'] = "Error Occurred";
-		}
-
-		if (Str::emptyStrings($data)) {
-			$data['status'] = $this->commentModel->editComment($commentId, $content) ? 200 : 500;
-			$data['new_time'] = Str::formatEpoch(time(), "d/m/y H:i");
-		}
-	}
 
 
 	/**
@@ -179,7 +155,7 @@ class Article extends Controller
 		$commentId = (int) $_GET['idComment'];
 		$articleId = $_GET['idArticle'];
 
-		if (!$this->commentModel->isUserComment($commentId) || !Session::isAdmin()) {
+		if (!$this->commentModel->isUserComment($commentId) && Session::isAdmin() === false) {
 			Session::flash('delete_error', "Impossible de supprimer le commentaire car c'est pas le votre veuillez le signaler s'il est innaproprié !", 'alert alert-danger');
 		} else {
 			$deleteComment = $this->commentModel->deleteComment($commentId);

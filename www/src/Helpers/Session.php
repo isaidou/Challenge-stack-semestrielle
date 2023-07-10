@@ -110,6 +110,6 @@ class Session
 		if (isset($_SESSION['profile_img']) && !empty($_SESSION['profile_img'])) {
 			return  $_SESSION['profile_img'];
 		}
-		return '/uploads/' . 'default-profile.png';
+		return DEFAULT_PROFILE_PATH;
 	}
 }

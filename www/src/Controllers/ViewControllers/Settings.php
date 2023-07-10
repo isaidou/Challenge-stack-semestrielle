@@ -20,7 +20,6 @@ class Settings extends ProtectedController
 
 	/**
 	 * Update User Profile
-	 * Reset Session details
 	 * 
 	 * @route true
 	 * 
@@ -28,9 +27,9 @@ class Settings extends ProtectedController
 	public function editProfile()
 	{
 		if (Server::checkPostReq(['pseudo', 'username', 'about'])) {
-			$pseudo = $_POST['pseudo'];
-			$username = $_POST['username'];
-			$about = Str::stripNewLines($_POST['about']);
+			$pseudo = ht($_POST['pseudo']);
+			$username = ht($_POST['username']);
+			$about = Str::stripNewLines(ht($_POST['about']));
 
 			$data = [];
 

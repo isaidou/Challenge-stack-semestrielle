@@ -18,9 +18,11 @@
             <?php foreach ($data['articles'] as $article) : ?>
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img class="user-img" src="<?= Session::userProfilePath() ?>" alt="<?= $article->pseudo ?>">
-                    <b class='d-block'><?= ht($_SESSION['pseudo']) ?></b>
-                    <small class="text-muted">@<?= ht($_SESSION['username']) ?></small>
+
+                    <img class="user-img" src="<?= Image::getProfileImg($article->user_info->profile_img)  ?>"
+                        alt="<?= $article->pseudo ?>">
+                    <b class='d-block'><?= ht($data['user']->pseudo) ?></b>
+                    <small class="text-muted">@<?= ht($article->user_info->username) ?></small>
                     <div class="card-body">
                         <h2 class="card-title"><?= ht($article->title) ?></h2>
                         <h4 class="card-subtitle mb-2 text-muted"><?= ht($article->tagline, 100) ?></h4>

@@ -6,7 +6,8 @@
         $commentImage = DEFAULT_PROFILE_PATH;
         if (Session::isLoggedIn()) $commentImage = "{$_SESSION['profile_img']}";
         ?>
-        <div class="user-img" style="background-image: url(<?= $commentImage ?>); border: 1px solid #ebebeb"></div>
+        <div class="user-img"
+            style="background-image: url(<?= Image::getProfileImg($commentImage) ?>); border: 1px solid #ebebeb"></div>
     </div>
     <input type="hidden" class='token' id="comment-info" data-parent-id='0' data-method="add" data-edit-id="0">
     <div class="col-md-8 col-10">

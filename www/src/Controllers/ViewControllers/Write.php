@@ -285,6 +285,7 @@ class Write extends ProtectedController
 		$data = [];
 		$data['last_draft_id'] = 0;
 
+
 		foreach ($drafts as $draft) {
 			$data['last_draft_id'] = $draft->id;
 			$draft->tagline = Str::stripNewLines($draft->tagline);
@@ -320,7 +321,7 @@ class Write extends ProtectedController
 
 	public function handleSubmission(string $entityId = null)
 	{
-		$isUpdate = !empty($entityId);
+		$isUpdate = Utils::isNull($entityId);
 
 		$data = [
 			'title' => '',
@@ -336,13 +337,13 @@ class Write extends ProtectedController
 		}
 
 		$isDraft = isset($_POST['save_draft']);
-		$content = $_POST['content'];
+		$content = ht($_POST['content']);
 		$dataInput = ['content' => Str::stripNewLines($content)];
 
-		$draftName = isset($_POST['draft_name']) ? trim($_POST['draft_name']) : "";
-		$title = isset($_POST['title']) ? Str::stripNewLines($_POST['title']) : "";
-		$tagline = isset($_POST['tagline']) ? Str::stripNewLines($_POST['tagline']) : "";
-		$tags = $this->parseTags($_POST['tags']);
+		$draftName = isset($_POST['draft_name']) ? ht(trim($_POST['draft_name'])) : "";
+		$title = isset($_POST['title']) ? ht(Str::stripNewLines($_POST['title'])) : "";
+		$tagline = isset($_POST['tagline']) ? ht(Str::stripNewLines($_POST['tagline'])) : "";
+		$tags = $this->parseTags(ht($_POST['tags']));
 		$tagsString = implode(", ", $tags);
 
 		$dataInput = array_merge($dataInput, ['draft_name' => $draftName, 'title' => $title, 'tagline' => $tagline, 'tags' => $tags]);

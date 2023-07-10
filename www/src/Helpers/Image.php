@@ -87,4 +87,10 @@ class Image
 		@unlink($newImagePath);
 		return $response_data->secure_url;
 	}
+	// get profile image
+	public static function getProfileImg(string $imgUrl): string
+	{
+		if (self::validateImgUrl($imgUrl)) return $imgUrl;
+		return DEFAULT_PROFILE_PATH;
+	}
 }

@@ -6,7 +6,6 @@ class WriteModel extends Model
 {
 	public function uploadImage($img)
 	{
-
 		return Image::uploadImageToCloudinary($img);
 	}
 
@@ -95,18 +94,6 @@ class WriteModel extends Model
 		$count = $this->db->rowCount();
 
 		return $count === 1;
-	}
-
-	public function fetchAllDraft(string $draftId)
-	{
-		// Checked if correct login
-		$this->db->query("SELECT * from blog_drafts WHERE draft_id = :draft_id AND user_id = :user_id");
-		$this->db->bind(":draft_id", $draftId);
-		$this->db->bind(":user_id", $_SESSION['user_id']);
-
-		$row = $this->db->fetchRows();
-		if (!empty($row)) return $row;
-		return false;
 	}
 
 	public function getUserArticle(string $articleId)
